@@ -1,0 +1,38 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      ".git/**",
+      ".gitignore",
+      "**/*.bak.*",
+      "*.bak.*",
+      "landing_v1_reference.html",
+      "**/*.md",
+      "node_modules/**"
+    ],
+    "rewrites": [
+      { "source": "/", "destination": "/start.html" },
+      { "source": "/mou", "destination": "/landing.html" },
+      { "source": "/privacy", "destination": "/privacy.html" },
+      { "source": "/index.html", "destination": "/privacy.html" },
+      { "source": "/terms", "destination": "/terms.html" },
+      { "source": "/deletion", "destination": "/deletion.html" }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(png|jpg|jpeg|gif|webp|svg|ico)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=604800" }
+        ]
+      },
+      {
+        "source": "**/*.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=3600" }
+        ]
+      }
+    ]
+  }
+}
