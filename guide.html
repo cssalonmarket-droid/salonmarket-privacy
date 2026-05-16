@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="미용실 · 네일샵 · 피부미용실 · 속눈썹 · 왁싱 · 두피 · 메이크업 · 학원 8개 업종 창업 가이드. 절차 · 비용 · 인허가 · 입지 한곳에서.">
+<meta name="theme-color" content="#4A1942">
+<meta property="og:title" content="뷰티업계 8개 업종 창업 가이드 — 살롱마켓">
+<meta property="og:description" content="헤어부터 미용교육원까지. 절차 · 비용 · 인허가 · 장비 · 마케팅 한곳에서.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://salonmarket.kr/guide">
+<meta property="og:image" content="https://salonmarket.kr/og-image.png">
+<title>미용실 창업 가이드 — 헤어 · 네일 · 피부 · 8개 업종 | 살롱마켓</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #4A1942;
+  --primary-dark: #2D0D27;
+  --accent: #E94E8B;
+  --accent-soft: #F8E8F0;
+  --bg: #FEFEFE;
+  --bg-soft: #FAF7F9;
+  --bg-cream: #FFF8F5;
+  --text: #1A0A18;
+  --text-soft: #5A4A56;
+  --text-mute: #8A7A86;
+  --border: #E8E0E5;
+  --border-soft: #F0EAEE;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.mono { font-variant-numeric: tabular-nums; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Nav ──────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(254,254,254,0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; max-width: 1100px; margin: 0 auto; gap: 20px;
+}
+.logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700;
+  color: var(--primary);
+}
+.logo-mark {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: white; font-weight: 800; font-size: 14px;
+}
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: var(--text-soft);
+  transition: color 0.18s;
+}
+.nav-links a:hover { color: var(--primary); }
+.nav-links a.active { color: var(--primary); font-weight: 600; }
+.nav-cta {
+  background: var(--primary); color: white !important;
+  padding: 10px 18px; border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+  transition: all 0.2s;
+}
+.nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.nav-hamburger {
+  display: none; width: 40px; height: 40px;
+  border-radius: 10px; background: var(--bg-soft);
+  align-items: center; justify-content: center; color: var(--primary);
+}
+
+/* ── Hero ──────────────────────────────────────── */
+.hero {
+  padding: 130px 0 70px;
+  background: radial-gradient(ellipse at top right, rgba(233,78,139,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom left, rgba(74,25,66,0.06) 0%, transparent 50%),
+              var(--bg);
+}
+.hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
+.section-tag {
+  display: inline-block; color: var(--accent);
+  font-size: 12px; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 16px;
+}
+h1.hero-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800; line-height: 1.18; letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+h1.hero-title .highlight {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: clamp(15px, 1.7vw, 18px);
+  color: var(--text-soft); line-height: 1.65; font-weight: 500;
+}
+
+/* ── Section ──────────────────────────────────── */
+section { padding: 70px 0; }
+.section-head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+h2.section-title {
+  font-size: clamp(24px, 3.6vw, 36px);
+  font-weight: 800; letter-spacing: -0.025em; line-height: 1.25;
+  margin-bottom: 14px;
+}
+.section-sub { font-size: 16px; color: var(--text-soft); line-height: 1.65; }
+
+/* ── Steps (공통 6단계) ───────────────────────── */
+.steps-section { background: var(--bg-soft); }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+}
+.step-card {
+  background: white; border: 1px solid var(--border-soft);
+  border-radius: 16px; padding: 24px 22px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(74,25,66,0.08);
+}
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white; font-family: 'Fraunces', serif;
+  font-size: 16px; font-weight: 700; margin-bottom: 14px;
+}
+.step-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+.step-card p { font-size: 14px; color: var(--text-soft); line-height: 1.6; }
+
+/* ── Tabs (8업종) ─────────────────────────────── */
+.tabs-wrap { overflow-x: auto; margin-bottom: 32px; }
+.tabs {
+  display: flex; gap: 8px; padding: 4px;
+  background: var(--bg-soft); border-radius: 14px;
+  min-width: max-content;
+}
+.tab-btn {
+  padding: 11px 18px; border-radius: 10px;
+  font-size: 14px; font-weight: 600; color: var(--text-soft);
+  background: transparent; white-space: nowrap;
+  transition: all 0.18s;
+}
+.tab-btn:hover { color: var(--primary); }
+.tab-btn.active {
+  background: var(--primary); color: white;
+  box-shadow: 0 6px 16px rgba(74,25,66,0.20);
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.3s; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+.tab-content {
+  background: white; border: 1px solid var(--border);
+  border-radius: 20px; padding: 32px;
+}
+.tab-content h3 {
+  font-size: 22px; font-weight: 800; margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.tab-intro {
+  font-size: 15px; color: var(--text-soft); line-height: 1.7; margin-bottom: 22px;
+}
+.info-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  margin-bottom: 22px;
+}
+.info-card {
+  background: var(--bg-cream); border-radius: 12px; padding: 16px 18px;
+  border-left: 3px solid var(--accent);
+}
+.info-card .label {
+  font-size: 11px; font-weight: 700; color: var(--accent);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;
+}
+.info-card .value { font-size: 14.5px; color: var(--text); font-weight: 500; line-height: 1.55; }
+
+.salonmarket-tip {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white; border-radius: 14px; padding: 22px 24px;
+  margin-top: 18px;
+}
+.salonmarket-tip h4 {
+  font-size: 14px; font-weight: 800; letter-spacing: 0.04em;
+  margin-bottom: 8px; opacity: 0.85;
+}
+.salonmarket-tip p { font-size: 15px; line-height: 1.65; }
+
+/* ── CTA ─────────────────────────────────────── */
+.cta-section { padding: 80px 0; text-align: center; }
+.cta-card {
+  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--bg-cream) 100%);
+  border-radius: 24px; padding: 48px 32px;
+  border: 1px solid var(--border-soft);
+}
+.cta-card h2 {
+  font-size: clamp(22px, 3vw, 30px); font-weight: 800;
+  letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.cta-card p { font-size: 15px; color: var(--text-soft); margin-bottom: 24px; }
+.cta-btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--primary); color: white !important;
+  padding: 14px 28px; border-radius: 100px;
+  font-size: 14px; font-weight: 700;
+  transition: all 0.2s; min-height: 48px;
+}
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; color: var(--text) !important;
+  padding: 14px 24px; border-radius: 100px;
+  font-size: 14px; font-weight: 600;
+  border: 1.5px solid var(--border);
+  transition: all 0.2s; min-height: 48px;
+}
+.btn-secondary:hover { border-color: var(--primary); color: var(--primary) !important; }
+
+/* ── Footer ──────────────────────────────────── */
+.intermediary-notice {
+  background: var(--bg-cream); border-top: 1px solid var(--border-soft);
+  padding: 22px 0;
+}
+.intermediary-notice p {
+  font-size: 13px; color: var(--text-soft); line-height: 1.7;
+  text-align: center; max-width: 900px; margin: 0 auto; padding: 0 24px;
+}
+footer {
+  background: #1A0A18; color: rgba(255,255,255,0.7);
+  padding: 48px 0 32px; font-size: 13px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px; margin-bottom: 36px;
+}
+.footer-brand h3 {
+  font-family: 'Fraunces', serif; color: white;
+  font-size: 18px; font-weight: 700; margin-bottom: 10px;
+}
+.footer-brand p { font-size: 13px; line-height: 1.7; max-width: 320px; }
+footer h5 {
+  color: white; font-size: 13px; font-weight: 700;
+  margin-bottom: 14px; letter-spacing: 0.04em;
+}
+footer ul { list-style: none; }
+footer li { padding: 5px 0; }
+footer a { color: rgba(255,255,255,0.6); transition: color 0.18s; }
+footer a:hover { color: var(--accent); }
+.footer-info {
+  padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.7;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 1024px) {
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .nav-inner { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: inline-flex; }
+  section { padding: 50px 0; }
+  .hero { padding: 110px 0 50px; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .tab-content { padding: 24px 20px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .cta-card { padding: 36px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark">S</span> 살롱마켓
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">홈</a></li>
+      <li><a href="/guide" class="active">창업</a></li>
+      <li><a href="/closure-guide">폐업</a></li>
+      <li><a href="/auction">경매</a></li>
+      <li><a href="/calculator">계산기</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/closure-cases">사례</a></li>
+      <li><a href="/mou">협회 MOU</a></li>
+    </ul>
+    <a href="/#signup" class="nav-cta">알림 받기</a>
+    <button class="nav-hamburger" aria-label="메뉴 열기" onclick="document.querySelector('.nav-links').style.display='flex';this.style.display='none';">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="section-tag">Beauty Business Guide</div>
+      <h1 class="hero-title">뷰티업계 창업,<br><span class="highlight">살롱마켓이 함께합니다</span></h1>
+      <p class="hero-sub">헤어부터 미용교육원까지 — 8개 업종 창업 절차 · 비용 · 인허가 · 입지 · 장비 · 마케팅을 한곳에서.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 공통 6단계 ───────────────────────────── -->
+<section class="steps-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Common Steps</div>
+      <h2 class="section-title">창업, 누구나 거쳐가는 6단계</h2>
+      <p class="section-sub">업종이 달라도 본질은 같습니다. 한 단계씩 차근차근 따라가세요.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>사업계획 수립</h3>
+        <p>컨셉 · 타깃 · 차별점 정의. 매출 시뮬레이션과 손익 분기점 추정.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>입지 선정</h3>
+        <p>유동인구 · 임대료 · 경쟁점포 분석. 1층/지하/2층 트레이드오프.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>인허가 / 신고</h3>
+        <p>관할 보건소 미용업 신고 · 사업자등록 · 위생교육 이수.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>장비 / 인테리어</h3>
+        <p>살롱마켓 중고로 30~60% 절감. 폐업 매장 일괄 인수도 가능.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <h3>직원 채용 / 교육</h3>
+        <p>미용사 면허 확인 · 4대보험 가입 · 매뉴얼화로 이직률 ↓</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <h3>마케팅 / 오픈</h3>
+        <p>SNS 콘텐츠 + 네이버/카카오 지도 등록 + 시술 시연으로 첫 단골 확보.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 8업종 탭 ────────────────────────────── -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">8 Categories</div>
+      <h2 class="section-title">업종별 상세 가이드</h2>
+      <p class="section-sub">평수 · 비용 · 인허가 · 핵심 장비를 업종별로 정리했습니다.</p>
+    </div>
+
+    <div class="tabs-wrap">
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="hair">헤어</button>
+        <button class="tab-btn" data-tab="nail">네일</button>
+        <button class="tab-btn" data-tab="skin">피부</button>
+        <button class="tab-btn" data-tab="lash">속눈썹</button>
+        <button class="tab-btn" data-tab="wax">왁싱</button>
+        <button class="tab-btn" data-tab="scalp">두피</button>
+        <button class="tab-btn" data-tab="makeup">메이크업</button>
+        <button class="tab-btn" data-tab="academy">미용교육원</button>
+      </div>
+    </div>
+
+    <!-- 헤어 -->
+    <div class="tab-panel active" id="tab-hair">
+      <div class="tab-content">
+        <h3>헤어 (미용실 / 살롱)</h3>
+        <p class="tab-intro">국내 17만+ 미용업 사업체 중 가장 큰 비중. 1인 디자이너 운영부터 대형 살롱까지 스펙트럼이 넓고, 폐업 시 회수 가능 자산도 가장 큽니다.</p>
+        <div class="info-grid">
+          <div class="info-card"><div class="label">평수</div><div class="value">15~30평</div></div>
+          <div class="info-card"><div class="label">창업 비용</div><div class="value">5,000만~1.5억</div></div>
+          <div class="info-card"><div class="label">인허가</div><div class="value">미용업 신고(보건소) + 미용사 면허</div></div>
+          <div class="info-card"><div class="label">핵심 장비</div><div class="value">헤어체어 · 샴푸대 · 드라이어 · 미러 · 매직기 · 펌기</div></div>
+          <div class="info-card"><div class="label">입지</div><div class="value">골목 안쪽도 단골 가능. 1층 권장 · 주차 1대+</div></div>
+          <div class="info-card"><div class="label">매출 범위</div><div class="value">1인샵 5천만~1.5억 / 다수 직원 1억~3억</div></div>
+        </div>
+        <div class="salonmarket-tip">
+          <h4>💡 살롱마켓 활용 팁</h4>
+          <p>폐업 매장 일괄 인수로 초기 비용 평균 40~60% 절감 사례 다수. 헤어체어 6대 + 샴푸대 2대 패키지 양도 케이스가 가장 흔합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 네일 -->
+    <div class="tab-panel" id="tab-nail">
+      <div class="tab-content">
+        <h3>네일</h3>
+        <p class="tab-intro">소자본 1인샵 창업이 가능한 대표 업종. 오피스가/대학가/주택가 모두 진입 가능하며, 평수 대비 회전율이 높습니다.</p>
+        <div class="info-grid">
+          <div class="info-card"><div class="label">평수</div><div class="value">5~15평</div></div>
+          <div class="info-card"><div class="label">창업 비용</div><div class="value">2,000만~5,000만</div></div>
+          <div class="info-card"><div class="label">인허가</div><div class="value">네일 미용업 신고 + 면허</div></div>
+          <div class="info-card"><div class="label">핵심 장비</div><div class="value">네일테이블 · UV램프 · 흡진기 · 페디큐어 의자 · 디스플레이</div></div>
+          <div class="info-card"><div class="label">입지</div><div class="value">오피스가 1F / 대학가 1~2F / 주택가</div></div>
+          <div class="info-card"><div class="label">소자본 시작</div><div class="value">1인샵 1,500만원부터 가능</div></div>
+        </div>
+        <div class="salonmarket-tip">
+          <h4>💡 살롱마켓 활용 팁</h4>
+          <p>중고 네일테이블 + UV램프 세트가 가장 활발히 거래되는 카테고리. 회원권 잔여 인수 협의도 가능합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 피부 -->
+    <div class="tab-panel" id="tab-skin">
+      <div class="tab-content">
+        <h3>피부 (에스테틱)</h3>
+        <p class="tab-intro">1:1 프리미엄 · 회원제 · 남성 피부관리 확장으로 평균 객단가가 가장 높은 업종 중 하나. 고가 장비 보유로 중고 거래 시장도 활발합니다.</p>
+        <div class="info-grid">
+          <div class="info-card"><div class="label">평수</div><div class="value">10~25평</div></div>
+          <div class="info-card"><div class="label">창업 비용</div><div class="value">3,000만~8,000만</div></div>
+          <div class="info-card"><div class="label">인허가</div><div class="value">피부미용업 신고 + 피부 면허</div></div>
+          <div class="info-card"><div class="label">핵심 장비</div><div class="value">침대 · 스팀기 · 고주파 · LED · 진공흡입기</div></div>
+          <div class="info-card"><div class="label">트렌드</div><div class="value">1:1 프리미엄 / 회원제 / 남성 피부관리</div></div>
+          <div class="info-card"><div class="label">장비 단가</div><div class="value">고주파/LED 1대당 100~500만원</div></div>
+        </div>
+        <div class="salonmarket-tip">
+          <h4>💡 살롱마켓 활용 팁</h4>
+          <p>고주파기 · LED 마스크 등 고가 장비가 호가 대비 +25% 회수된 사례 확인. AI 가격 추천으로 적정가 자동 산정.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 속눈썹 -->
+    <div class="tab-panel" id="tab-lash">
+      <div class="tab-content">
+        <h3>속눈썹</h3>
+        <p class="tab-intro">평수 5~10평이면 충분한 소자본 추천 업종. 1인샵 운영이 일반적이며, 단골 비중이 매우 높습니다.</p>
+        <div class="info-grid">
+          <div class="info-card"><div class="label">평수</div><div class="value">5~10평</div></div>
+          <div class="info-card"><div class="label">창업 비용</div><div class="value">1,500만~4,000만</div></div>
+          <div class="info-card"><div class="label">인허가</div><div class="value">미용업(속눈썹) 신고</div></div>
+          <div class="info-card"><div class="label">핵심 장비</div><div class="value">침대 · 확대경 라이트 · 음이온기 · 보관함</div></div>
+          <div class="info-card"><div class="label">입지</div><div class="value">2~3F 상관없음 · 주택가/오피스가</div></div>
+          <div class="info-card"><div class="label">회전율</div><div class="value">시술당 60~120분 · 1일 5~8명</div></div>
+        </div>
+        <div class="salonmarket-tip">
+          <h4>💡 살롱마켓 활용 팁</h4>
+          <p>침대 + 라이트 세트 패키지 거래가 가장 흔합니다. 폐업 매장에서 단골 인계까지 협의 가능.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 왁싱 -->
+    <div class="tab-panel" id="tab-wax">
+      <div class="tab-content">
+        <h3>왁싱</h3>
+        <p class="tab-intro">남성 시장 확장으로 빠르게 성장 중. 헤어 라인 · 브라질리언 등 시술 종류 다양. 소자본 가능.</p>
+        <div class="info-grid">
+          <div class="info-card"><div class="label">평수</div><div class="value">5~15평</div></div>
+          <div class="info-card"><div class="label">창업 비용</div><div class="value">2,000만~5,000만</div></div>
+          <div class="info-card"><div class="label">인허가</div><div class="value">미용업 신고 — 지자체 확인 필요</div></div>
+          <div class="info-card"><div class="label">핵심 장비</div><div class="value">왁스워머 · 침대 · 위생용품</div></div>
+          <div class="info-card"><div class="label">시장 동향</div><div class="value">남성 왁싱 시장 연 +15% 성장</div></div>
+          <div class="info-card"><div class="label">단가</div><div class="value">부위별 3만~10만원</div></div>
+        </div>
+        <div class="salonmarket-tip">
+          <h4>💡 살롱마켓 활용 팁</h4>
+          <p>왁스워머 + 침대 1~2대로 시작 가능. 폐업 매장의 위생용품 재고 인수가 자주 발생합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 두피 -->
+    <div class="tab-panel" id="tab-scalp">
+      <div class="tab-content">
+        <h3>두피관리</h3>
+        <p class="tab-intro">탈모 인구 증가로 수요 급증. 두피 진단 + 케어 패키지로 회원제 운영이 일반적입니다.</p>
+        <div class="info-grid">
+          <div class="info-card"><div class="label">평수</div><div class="value">8~20평</div></div>
+          <div class="info-card"><div class="label">창업 비용</div><div class="value">3,000만~7,000만</div></div>
+          <div class="info-card"><div class="label">인허가</div><div class="value">미용업 신고</div></div>
+          <div class="info-card"><div class="label">핵심 장비</div><div class="value">두피 진단기 · 마사지기 · 스팀 · 모근 분석기</div></div>
+          <div class="info-card"><div class="label">고객층</div><div class="value">30~50대 남녀 · 회원제 비중 ↑</div></div>
+          <div class="info-card"><div class="label">시술 단가</div><div class="value">회당 5만~20만원 · 패키지 30만~100만</div></div>
+        </div>
+        <div class="salonmarket-tip">
+          <h4>💡 살롱마켓 활용 팁</h4>
+          <p>두피 진단기 + 모근 분석기 세트가 고가 장비. 폐업 매장에서 회원 카드 인계 협의 시 PIPA 동의 필수.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 메이크업 -->
+    <div class="tab-panel" id="tab-makeup">
+      <div class="tab-content">
+        <h3>메이크업</h3>
+        <p class="tab-intro">출장 메이크업 + 신부 패키지로 부가 수익 창출 가능. 평수 작아도 운영 가능.</p>
+        <div class="info-grid">
+          <div class="info-card"><div class="label">평수</div><div class="value">5~15평</div></div>
+          <div class="info-card"><div class="label">창업 비용</div><div class="value">2,000만~5,000만</div></div>
+          <div class="info-card"><div class="label">인허가</div><div class="value">미용업(메이크업) 신고</div></div>
+          <div class="info-card"><div class="label">핵심 장비</div><div class="value">메이크업 의자 · 라이트 · 화장품 보관장</div></div>
+          <div class="info-card"><div class="label">부가 수익</div><div class="value">출장 메이크업 · 신부 패키지 · 클래스</div></div>
+          <div class="info-card"><div class="label">시즌성</div><div class="value">3~6월 · 9~11월 결혼 시즌 매출 ↑</div></div>
+        </div>
+        <div class="salonmarket-tip">
+          <h4>💡 살롱마켓 활용 팁</h4>
+          <p>메이크업 의자 + 라이트 세트가 핵심 거래 카테고리. 화장품 재고는 사용기한 확인 후 양도 협의.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 미용교육원 -->
+    <div class="tab-panel" id="tab-academy">
+      <div class="tab-content">
+        <h3>미용교육원 (학원)</h3>
+        <p class="tab-intro">자본 규모가 가장 크고 인허가가 복잡한 업종. 실습 장비 다량 + 강의실 설비 필요. 면적도 가장 큽니다.</p>
+        <div class="info-grid">
+          <div class="info-card"><div class="label">평수</div><div class="value">30~100평</div></div>
+          <div class="info-card"><div class="label">창업 비용</div><div class="value">1.5억~5억</div></div>
+          <div class="info-card"><div class="label">인허가</div><div class="value">평생교육시설 신고 또는 학원 설립 (관할 교육청)</div></div>
+          <div class="info-card"><div class="label">핵심 장비</div><div class="value">실습 의자/샴푸대 다량 · 강의실 설비</div></div>
+          <div class="info-card"><div class="label">수익 구조</div><div class="value">등록금 + 자격증 시험 대비 패키지</div></div>
+          <div class="info-card"><div class="label">주의</div><div class="value">강사 면허 · 시설 기준 · 화재 안전 강화</div></div>
+        </div>
+        <div class="salonmarket-tip">
+          <h4>💡 살롱마켓 활용 팁</h4>
+          <p>일괄 인수가 가장 활발한 카테고리. 폐원 교육원의 실습 장비 20대+ 패키지가 정기적으로 등록됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ──────────────────────────────────── -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <h2>중고 장비로 창업비 절감하기</h2>
+      <p>폐업 매장 일괄 인수로 평균 40~60% 비용 절감 사례 다수. 살롱마켓 앱에서 바로 시작하세요.</p>
+      <div class="cta-btn-group">
+        <a href="/#signup" class="btn-primary">앱 출시 알림 받기 →</a>
+        <a href="/auction" class="btn-secondary">경매 매물 보기</a>
+        <a href="/closure-guide" class="btn-secondary">폐업 가이드</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 통신판매중개자 안내 ──────────────────── -->
+<div class="intermediary-notice">
+  <p>살롱마켓(SalonMarket)은 통신판매의 당사자가 아닌 <strong>통신판매중개자</strong>이며, 상품의 거래정보 및 거래에 관한 책임은 판매 회원에게 있습니다.</p>
+</div>
+
+<!-- ── Footer ──────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>살롱마켓 SalonMarket</h3>
+        <p>미용업계 최초 거래 플랫폼. 폐업하는 원장님의 장비가 창업하는 원장님께.</p>
+      </div>
+      <div>
+        <h5>SERVICE</h5>
+        <ul>
+          <li><a href="/guide">창업 가이드</a></li>
+          <li><a href="/closure-guide">폐업 가이드</a></li>
+          <li><a href="/auction">경매 안내</a></li>
+          <li><a href="/calculator">권리금 계산기</a></li>
+          <li><a href="/faq">자주 묻는 질문</a></li>
+          <li><a href="/closure-cases">폐업 사례</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>LEGAL</h5>
+        <ul>
+          <li><a href="/terms">이용약관</a></li>
+          <li><a href="/privacy">개인정보처리방침</a></li>
+          <li><a href="/deletion">계정 삭제</a></li>
+          <li><a href="/mou">협회 MOU</a></li>
+          <li><a href="mailto:cs.salonmarket@gmail.com">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      상호 살롱마켓(SalonMarket) · 대표 이재근 · 사업자등록번호 510-11-26013<br>
+      통신판매업 신고: 20260506-83139508 · 구매안전서비스 등록: 제 A17-260507-1154호<br>
+      경기도 화성시 동탄대로24길 199 · cs.salonmarket@gmail.com · 010-5744-3106<br>
+      © 2026 SalonMarket. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Tab switching ──────────────────────────
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + target).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

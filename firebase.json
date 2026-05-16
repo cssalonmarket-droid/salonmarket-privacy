@@ -18,7 +18,13 @@
       { "source": "/privacy", "destination": "/privacy.html" },
       { "source": "/index.html", "destination": "/privacy.html" },
       { "source": "/terms", "destination": "/terms.html" },
-      { "source": "/deletion", "destination": "/deletion.html" }
+      { "source": "/deletion", "destination": "/deletion.html" },
+      { "source": "/guide", "destination": "/guide.html" },
+      { "source": "/closure-guide", "destination": "/closure-guide.html" },
+      { "source": "/auction", "destination": "/auction.html" },
+      { "source": "/calculator", "destination": "/calculator.html" },
+      { "source": "/faq", "destination": "/faq.html" },
+      { "source": "/closure-cases", "destination": "/closure-cases.html" }
     ],
     "headers": [
       {
@@ -31,6 +37,18 @@
         "source": "**/*.html",
         "headers": [
           { "key": "Cache-Control", "value": "public, max-age=3600" }
+        ]
+      },
+      {
+        "source": "/sitemap.xml",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=86400" }
+        ]
+      },
+      {
+        "source": "/robots.txt",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=86400" }
         ]
       }
     ]

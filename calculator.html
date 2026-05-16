@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="미용실 권리금 30초 자동 계산. 영업권리금 + 시설권리금 + 바닥권리금. 헤어 · 네일 · 피부 8개 업종 맞춤 산정.">
+<meta name="theme-color" content="#4A1942">
+<meta property="og:title" content="미용실 권리금 계산기 — 살롱마켓">
+<meta property="og:description" content="업종 · 평수 · 매출 입력 30초. 영업 + 시설 + 바닥 권리금 자동 산정.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://salonmarket.kr/calculator">
+<meta property="og:image" content="https://salonmarket.kr/og-image.png">
+<title>미용실 권리금 계산기 — 영업 · 시설 · 바닥 3종 자동 산정 | 살롱마켓</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root { --primary:#4A1942; --primary-dark:#2D0D27; --accent:#E94E8B; --accent-soft:#F8E8F0; --bg:#FEFEFE; --bg-soft:#FAF7F9; --bg-cream:#FFF8F5; --text:#1A0A18; --text-soft:#5A4A56; --text-mute:#8A7A86; --border:#E8E0E5; --border-soft:#F0EAEE; --warn:#C78A2B; --warn-bg:#FFF8E5; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif; color:var(--text); background:var(--bg); line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+a { color:inherit; text-decoration:none; }
+button { font-family:inherit; cursor:pointer; border:none; background:none; }
+.mono { font-variant-numeric:tabular-nums; }
+.container { max-width:1100px; margin:0 auto; padding:0 24px; }
+nav { position:fixed; top:0; left:0; right:0; background:rgba(254,254,254,0.85); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid var(--border); z-index:100; }
+.nav-inner { display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1100px; margin:0 auto; gap:20px; }
+.logo { display:inline-flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-size:20px; font-weight:700; color:var(--primary); }
+.logo-mark { width:28px; height:28px; background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%); border-radius:8px; display:inline-flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:14px; }
+.nav-links { display:flex; gap:24px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--text-soft); transition:color 0.18s; }
+.nav-links a:hover { color:var(--primary); }
+.nav-links a.active { color:var(--primary); font-weight:600; }
+.nav-cta { background:var(--primary); color:white !important; padding:10px 18px; border-radius:100px; font-size:13px; font-weight:600; transition:all 0.2s; }
+.nav-cta:hover { background:var(--primary-dark); transform:translateY(-1px); }
+.nav-hamburger { display:none; width:40px; height:40px; border-radius:10px; background:var(--bg-soft); align-items:center; justify-content:center; color:var(--primary); }
+.hero { padding:130px 0 50px; background:radial-gradient(ellipse at top right,rgba(233,78,139,0.08) 0%,transparent 50%),var(--bg); }
+.hero-content { max-width:800px; margin:0 auto; text-align:center; }
+.section-tag { display:inline-block; color:var(--accent); font-size:12px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:16px; }
+h1.hero-title { font-size:clamp(30px,4.5vw,46px); font-weight:800; line-height:1.18; letter-spacing:-0.03em; margin-bottom:18px; }
+h1.hero-title .highlight { background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.hero-sub { font-size:clamp(15px,1.7vw,18px); color:var(--text-soft); line-height:1.65; font-weight:500; }
+
+/* Calculator */
+.calc-section { padding:30px 0 60px; }
+.calc-wrap {
+  max-width: 880px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.calc-form {
+  background: white; border: 1px solid var(--border);
+  border-radius: 20px; padding: 32px 28px;
+  box-shadow: 0 10px 30px rgba(26,10,24,0.05);
+}
+.calc-form h2 { font-size:20px; font-weight:800; margin-bottom:20px; letter-spacing:-0.015em; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.field label { font-size:13px; font-weight:600; color:var(--text); }
+.field label .req { color:var(--accent); margin-left:3px; }
+.field select, .field input {
+  font-family: inherit; font-size: 15px;
+  padding: 12px 14px; border: 1px solid var(--border);
+  border-radius: 10px; background: white; color: var(--text);
+  outline: none; min-height: 46px;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.field select:focus, .field input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(74,25,66,0.10);
+}
+.field .hint { font-size:11.5px; color:var(--text-mute); margin-top:2px; }
+.calc-submit {
+  margin-top: 8px; width: 100%;
+  background: var(--primary); color: white;
+  padding: 14px 24px; border-radius: 12px;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: background 0.18s, transform 0.18s;
+  min-height: 50px;
+}
+.calc-submit:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+.calc-result {
+  background: linear-gradient(135deg, var(--bg-cream) 0%, var(--accent-soft) 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px; padding: 32px 28px;
+  display: flex; flex-direction: column;
+}
+.calc-result h2 { font-size:20px; font-weight:800; margin-bottom:18px; letter-spacing:-0.015em; }
+.result-empty {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; color: var(--text-mute);
+}
+.result-empty .emoji { font-size: 40px; margin-bottom: 12px; }
+.result-empty p { font-size: 14px; line-height: 1.65; }
+
+.result-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 0; border-bottom: 1px solid var(--border-soft);
+}
+.result-row:last-of-type { border-bottom: none; }
+.result-row .label { font-size: 14px; color: var(--text-soft); font-weight: 500; }
+.result-row .value {
+  font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700;
+  color: var(--primary); font-variant-numeric: tabular-nums;
+}
+.result-total {
+  background: white; border-radius: 12px;
+  padding: 18px 20px; margin-top: 14px;
+  display: flex; justify-content: space-between; align-items: center;
+  border: 2px solid var(--primary);
+}
+.result-total .label { font-size: 14px; font-weight: 700; color: var(--primary); }
+.result-total .value {
+  font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700;
+  color: var(--primary); font-variant-numeric: tabular-nums;
+}
+.result-range {
+  margin-top: 12px; padding: 12px 16px;
+  background: white; border-radius: 10px;
+  font-size: 13px; color: var(--text-soft); text-align: center;
+}
+.result-range strong { color: var(--text); font-weight: 700; }
+
+/* 참고용 박스 — 필수 */
+.disclaimer-section { padding: 30px 0 70px; }
+.disclaimer {
+  background: var(--warn-bg);
+  border: 2px solid var(--warn);
+  border-radius: 16px;
+  padding: 24px 28px;
+  max-width: 880px; margin: 0 auto;
+}
+.disclaimer .icon { font-size:22px; margin-bottom:8px; display:block; }
+.disclaimer h3 { font-size:16px; font-weight:800; color:var(--warn); margin-bottom:10px; }
+.disclaimer p { font-size:14px; color:var(--text); line-height:1.75; }
+
+/* CTA */
+.cta-section { padding:60px 0; text-align:center; }
+.cta-card { background:linear-gradient(135deg,var(--accent-soft) 0%,var(--bg-cream) 100%); border-radius:24px; padding:48px 32px; border:1px solid var(--border-soft); }
+.cta-card h2 { font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-0.02em; margin-bottom:12px; }
+.cta-card p { font-size:15px; color:var(--text-soft); margin-bottom:24px; }
+.cta-btn-group { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn-primary { display:inline-flex; align-items:center; gap:8px; background:var(--primary); color:white !important; padding:14px 28px; border-radius:100px; font-size:14px; font-weight:700; transition:all 0.2s; min-height:48px; }
+.btn-primary:hover { background:var(--primary-dark); transform:translateY(-2px); }
+.btn-secondary { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--text) !important; padding:14px 24px; border-radius:100px; font-size:14px; font-weight:600; border:1.5px solid var(--border); transition:all 0.2s; min-height:48px; }
+.btn-secondary:hover { border-color:var(--primary); color:var(--primary) !important; }
+
+.intermediary-notice { background:var(--bg-cream); border-top:1px solid var(--border-soft); padding:22px 0; }
+.intermediary-notice p { font-size:13px; color:var(--text-soft); line-height:1.7; text-align:center; max-width:900px; margin:0 auto; padding:0 24px; }
+footer { background:#1A0A18; color:rgba(255,255,255,0.7); padding:48px 0 32px; font-size:13px; }
+.footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; margin-bottom:36px; }
+.footer-brand h3 { font-family:'Fraunces',serif; color:white; font-size:18px; font-weight:700; margin-bottom:10px; }
+.footer-brand p { font-size:13px; line-height:1.7; max-width:320px; }
+footer h5 { color:white; font-size:13px; font-weight:700; margin-bottom:14px; letter-spacing:0.04em; }
+footer ul { list-style:none; }
+footer li { padding:5px 0; }
+footer a { color:rgba(255,255,255,0.6); transition:color 0.18s; }
+footer a:hover { color:var(--accent); }
+.footer-info { padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7; }
+
+@media (max-width:1024px) {
+  .calc-wrap { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:768px) {
+  .container { padding:0 20px; }
+  .nav-inner { padding:12px 20px; }
+  .nav-links { display:none; }
+  .nav-hamburger { display:inline-flex; }
+  .hero { padding:110px 0 40px; }
+  .calc-form, .calc-result { padding:24px 20px; }
+  .footer-grid { grid-template-columns:1fr; gap:28px; }
+  .cta-card { padding:36px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-mark">S</span> 살롱마켓</a>
+    <ul class="nav-links">
+      <li><a href="/">홈</a></li>
+      <li><a href="/guide">창업</a></li>
+      <li><a href="/closure-guide">폐업</a></li>
+      <li><a href="/auction">경매</a></li>
+      <li><a href="/calculator" class="active">계산기</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/closure-cases">사례</a></li>
+      <li><a href="/mou">협회 MOU</a></li>
+    </ul>
+    <a href="/#signup" class="nav-cta">알림 받기</a>
+    <button class="nav-hamburger" aria-label="메뉴 열기" onclick="document.querySelector('.nav-links').style.display='flex';this.style.display='none';">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="section-tag">Premium Calculator</div>
+      <h1 class="hero-title">권리금,<br><span class="highlight">얼마가 적정할까요?</span></h1>
+      <p class="hero-sub">영업권리금 + 시설권리금 + 바닥권리금 3종을 자동 계산. 30초 만에 견적 확인.</p>
+    </div>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="container">
+    <div class="calc-wrap">
+      <form class="calc-form" id="calc-form" onsubmit="return calcPremium(event);">
+        <h2>입력값</h2>
+
+        <div class="field">
+          <label for="category">업종 <span class="req">*</span></label>
+          <select id="category" required>
+            <option value="">선택해주세요</option>
+            <option value="hair">헤어 (미용실)</option>
+            <option value="nail">네일</option>
+            <option value="skin">피부 (에스테틱)</option>
+            <option value="lash">속눈썹</option>
+            <option value="wax">왁싱</option>
+            <option value="scalp">두피관리</option>
+            <option value="makeup">메이크업</option>
+            <option value="academy">미용교육원</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="location">지역 <span class="req">*</span></label>
+          <select id="location" required>
+            <option value="">선택해주세요</option>
+            <option value="gangnam">서울 강남</option>
+            <option value="seoul">서울 비강남</option>
+            <option value="metro">광역시 (부산/대구/인천 등)</option>
+            <option value="mid">중소도시</option>
+            <option value="etc">기타</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="area">평수 <span class="req">*</span></label>
+          <input id="area" type="number" min="5" max="100" placeholder="예: 20" required>
+          <div class="hint">5~100평</div>
+        </div>
+
+        <div class="field">
+          <label for="revenue">월 매출 (만원) <span class="req">*</span></label>
+          <input id="revenue" type="number" min="100" max="10000" placeholder="예: 1500" required>
+          <div class="hint">100~10,000 만원</div>
+        </div>
+
+        <div class="field">
+          <label for="equipment">장비 가치 (만원) <span class="req">*</span></label>
+          <input id="equipment" type="number" min="100" max="20000" placeholder="예: 2000" required>
+          <div class="hint">현재 장비 시세 추정값</div>
+        </div>
+
+        <div class="field">
+          <label for="period">영업 기간 <span class="req">*</span></label>
+          <select id="period" required>
+            <option value="">선택해주세요</option>
+            <option value="lt1">1년 미만</option>
+            <option value="1to3">1~3년</option>
+            <option value="3to5">3~5년</option>
+            <option value="gt5">5년 이상</option>
+          </select>
+        </div>
+
+        <button type="submit" class="calc-submit">권리금 계산하기</button>
+      </form>
+
+      <div class="calc-result" id="calc-result">
+        <h2>계산 결과</h2>
+        <div class="result-empty" id="result-empty">
+          <span class="emoji">📊</span>
+          <p>왼쪽에 정보를 입력하면<br>예상 권리금이 자동 산출됩니다.</p>
+        </div>
+        <div id="result-detail" style="display:none;">
+          <div class="result-row">
+            <span class="label">영업권리금</span>
+            <span class="value mono" id="r-op">-</span>
+          </div>
+          <div class="result-row">
+            <span class="label">시설권리금</span>
+            <span class="value mono" id="r-fc">-</span>
+          </div>
+          <div class="result-row">
+            <span class="label">바닥권리금</span>
+            <span class="value mono" id="r-lc">-</span>
+          </div>
+          <div class="result-total">
+            <span class="label">예상 권리금 총액</span>
+            <span class="value mono" id="r-total">-</span>
+          </div>
+          <div class="result-range">
+            현실 범위: <strong id="r-low">-</strong> ~ <strong id="r-high">-</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 참고용 안내 박스 — 필수 -->
+<section class="disclaimer-section">
+  <div class="container">
+    <div class="disclaimer">
+      <span class="icon">ℹ️</span>
+      <h3>본 계산기는 참고 자료입니다</h3>
+      <p>실제 권리금은 매장 상태, 입지, 매출 추이, 임대인 조건, 시장 상황 등에 따라 크게 달라질 수 있으며, <strong>본 계산 결과를 거래 가격으로 보장하지 않습니다.</strong> 정확한 가격 측정은 살롱마켓 앱의 AI 시세 분석 또는 부동산 전문가 상담을 권장합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <h2>앱에서 더 정확한 시세 보기</h2>
+      <p>실제 거래 데이터 기반 AI 시세 분석과 동일 지역 매물 비교를 앱에서 확인하세요.</p>
+      <div class="cta-btn-group">
+        <a href="/#signup" class="btn-primary">앱 출시 알림 받기 →</a>
+        <a href="/auction" class="btn-secondary">경매 매물 보기</a>
+        <a href="/faq" class="btn-secondary">자주 묻는 질문</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="intermediary-notice">
+  <p>살롱마켓(SalonMarket)은 통신판매의 당사자가 아닌 <strong>통신판매중개자</strong>이며, 상품의 거래정보 및 거래에 관한 책임은 판매 회원에게 있습니다.</p>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>살롱마켓 SalonMarket</h3>
+        <p>미용업계 최초 거래 플랫폼. 폐업하는 원장님의 장비가 창업하는 원장님께.</p>
+      </div>
+      <div>
+        <h5>SERVICE</h5>
+        <ul>
+          <li><a href="/guide">창업 가이드</a></li>
+          <li><a href="/closure-guide">폐업 가이드</a></li>
+          <li><a href="/auction">경매 안내</a></li>
+          <li><a href="/calculator">권리금 계산기</a></li>
+          <li><a href="/faq">자주 묻는 질문</a></li>
+          <li><a href="/closure-cases">폐업 사례</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>LEGAL</h5>
+        <ul>
+          <li><a href="/terms">이용약관</a></li>
+          <li><a href="/privacy">개인정보처리방침</a></li>
+          <li><a href="/deletion">계정 삭제</a></li>
+          <li><a href="/mou">협회 MOU</a></li>
+          <li><a href="mailto:cs.salonmarket@gmail.com">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      상호 살롱마켓(SalonMarket) · 대표 이재근 · 사업자등록번호 510-11-26013<br>
+      통신판매업 신고: 20260506-83139508 · 구매안전서비스 등록: 제 A17-260507-1154호<br>
+      경기도 화성시 동탄대로24길 199 · cs.salonmarket@gmail.com · 010-5744-3106<br>
+      © 2026 SalonMarket. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── 권리금 계산 로직 ──────────────────────────
+const PROFIT_RATE = {
+  hair: 0.20, nail: 0.25, skin: 0.18, lash: 0.25,
+  wax: 0.22, scalp: 0.18, makeup: 0.20, academy: 0.15
+};
+const PERIOD_MULT = { lt1: 6, '1to3': 12, '3to5': 18, gt5: 24 };
+const LOC_MULT = { gangnam: 1.5, seoul: 1.2, metro: 1.0, mid: 0.8, etc: 0.6 };
+
+function formatKRW(v) {
+  return Math.round(v).toLocaleString('ko-KR') + '만원';
+}
+
+function calcPremium(e) {
+  e.preventDefault();
+
+  const cat = document.getElementById('category').value;
+  const loc = document.getElementById('location').value;
+  const area = parseFloat(document.getElementById('area').value);
+  const rev = parseFloat(document.getElementById('revenue').value);
+  const eq = parseFloat(document.getElementById('equipment').value);
+  const period = document.getElementById('period').value;
+
+  if (!cat || !loc || !area || !rev || !eq || !period) return false;
+
+  const opRights = rev * PROFIT_RATE[cat] * PERIOD_MULT[period];
+  const fcRights = eq * 0.7; // 감가상각 30%
+  const lcRights = area * 30 * LOC_MULT[loc]; // 평당 30만원 기준
+  const total = opRights + fcRights + lcRights;
+
+  document.getElementById('r-op').textContent = formatKRW(opRights);
+  document.getElementById('r-fc').textContent = formatKRW(fcRights);
+  document.getElementById('r-lc').textContent = formatKRW(lcRights);
+  document.getElementById('r-total').textContent = formatKRW(total);
+  document.getElementById('r-low').textContent = formatKRW(total * 0.8);
+  document.getElementById('r-high').textContent = formatKRW(total * 1.2);
+
+  document.getElementById('result-empty').style.display = 'none';
+  document.getElementById('result-detail').style.display = 'block';
+
+  return false;
+}
+</script>
+</body>
+</html>

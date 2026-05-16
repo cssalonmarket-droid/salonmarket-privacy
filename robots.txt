@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /landing_v1_reference.html
+Disallow: /*.bak.*
+Disallow: /screenshots/
+
+Sitemap: https://salonmarket.kr/sitemap.xml

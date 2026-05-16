@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="미용 장비 실시간 경매. 헤어체어 · 샴푸대 · 드라이어 · 매직기 22개 카테고리. AI 가격 추천 + 자동 매칭 + 안전결제.">
+<meta name="theme-color" content="#4A1942">
+<meta property="og:title" content="미용 장비 경매 — 살롱마켓">
+<meta property="og:description" content="평균 호가 대비 +20~40% 회수. 22개 카테고리 실시간 경매 + AI 가격 추천.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://salonmarket.kr/auction">
+<meta property="og:image" content="https://salonmarket.kr/og-image.png">
+<title>미용 장비 경매 — 헤어샵 장비 중고 거래 | 살롱마켓</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root { --primary:#4A1942; --primary-dark:#2D0D27; --accent:#E94E8B; --accent-soft:#F8E8F0; --bg:#FEFEFE; --bg-soft:#FAF7F9; --bg-cream:#FFF8F5; --text:#1A0A18; --text-soft:#5A4A56; --text-mute:#8A7A86; --border:#E8E0E5; --border-soft:#F0EAEE; --warn:#C78A2B; --warn-bg:#FFF8E5; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif; color:var(--text); background:var(--bg); line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+a { color:inherit; text-decoration:none; }
+button { font-family:inherit; cursor:pointer; border:none; background:none; }
+.mono { font-variant-numeric:tabular-nums; }
+.container { max-width:1100px; margin:0 auto; padding:0 24px; }
+nav { position:fixed; top:0; left:0; right:0; background:rgba(254,254,254,0.85); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid var(--border); z-index:100; }
+.nav-inner { display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1100px; margin:0 auto; gap:20px; }
+.logo { display:inline-flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-size:20px; font-weight:700; color:var(--primary); }
+.logo-mark { width:28px; height:28px; background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%); border-radius:8px; display:inline-flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:14px; }
+.nav-links { display:flex; gap:24px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--text-soft); transition:color 0.18s; }
+.nav-links a:hover { color:var(--primary); }
+.nav-links a.active { color:var(--primary); font-weight:600; }
+.nav-cta { background:var(--primary); color:white !important; padding:10px 18px; border-radius:100px; font-size:13px; font-weight:600; transition:all 0.2s; }
+.nav-cta:hover { background:var(--primary-dark); transform:translateY(-1px); }
+.nav-hamburger { display:none; width:40px; height:40px; border-radius:10px; background:var(--bg-soft); align-items:center; justify-content:center; color:var(--primary); }
+.hero { padding:130px 0 70px; background:radial-gradient(ellipse at top right,rgba(233,78,139,0.08) 0%,transparent 50%),radial-gradient(ellipse at bottom left,rgba(74,25,66,0.06) 0%,transparent 50%),var(--bg); }
+.hero-content { max-width:800px; margin:0 auto; text-align:center; }
+.section-tag { display:inline-block; color:var(--accent); font-size:12px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:16px; }
+h1.hero-title { font-size:clamp(32px,5vw,52px); font-weight:800; line-height:1.18; letter-spacing:-0.03em; margin-bottom:20px; }
+h1.hero-title .highlight { background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.hero-sub { font-size:clamp(15px,1.7vw,18px); color:var(--text-soft); line-height:1.65; font-weight:500; }
+section { padding:70px 0; }
+.section-head { text-align:center; max-width:720px; margin:0 auto 48px; }
+h2.section-title { font-size:clamp(24px,3.6vw,36px); font-weight:800; letter-spacing:-0.025em; line-height:1.25; margin-bottom:14px; }
+.section-sub { font-size:16px; color:var(--text-soft); line-height:1.65; }
+
+/* 3단계 */
+.steps-section { background:var(--bg-soft); }
+.steps-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.step-card { background:white; border:1px solid var(--border-soft); border-radius:16px; padding:28px 24px; transition:transform 0.25s,box-shadow 0.25s; }
+.step-card:hover { transform:translateY(-4px); box-shadow:0 14px 32px rgba(74,25,66,0.08); }
+.step-num { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:12px; background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%); color:white; font-family:'Fraunces',serif; font-size:18px; font-weight:700; margin-bottom:14px; }
+.step-card h3 { font-size:18px; font-weight:700; margin-bottom:8px; }
+.step-card p { font-size:14px; color:var(--text-soft); line-height:1.65; }
+.step-card .time { display:inline-block; margin-top:10px; font-size:12px; font-weight:700; color:var(--accent); background:var(--accent-soft); padding:3px 10px; border-radius:100px; }
+
+/* 비교표 */
+.compare-table { background:white; border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(26,10,24,0.05); }
+.compare-table table { width:100%; border-collapse:collapse; }
+.compare-table th, .compare-table td { padding:16px 20px; text-align:left; border-bottom:1px solid var(--border-soft); font-size:14px; }
+.compare-table th { background:var(--bg-cream); font-weight:700; }
+.compare-table th:first-child { width:30%; }
+.compare-table th.col-auction { background:var(--primary); color:white; }
+.compare-table td.us { background:rgba(74,25,66,0.04); font-weight:600; }
+.compare-table tr:last-child td, .compare-table tr:last-child th { border-bottom:none; }
+
+/* 업종별 인기 */
+.popular-section { background:var(--bg-soft); }
+.popular-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.popular-card { background:white; border:1px solid var(--border-soft); border-radius:14px; padding:20px 24px; }
+.popular-card .cat { font-size:13px; font-weight:700; color:var(--accent); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:8px; }
+.popular-card .items { font-size:14.5px; color:var(--text); line-height:1.6; }
+.popular-card .items strong { color:var(--primary); }
+
+/* 청약철회 박스 — 필수 */
+.legal-notice-section { padding:40px 0 70px; }
+.legal-notice {
+  background: var(--warn-bg);
+  border: 2px solid var(--warn);
+  border-radius: 16px;
+  padding: 28px 32px;
+  max-width: 880px; margin: 0 auto;
+}
+.legal-notice .icon { font-size: 24px; margin-bottom: 10px; display: block; }
+.legal-notice h3 {
+  font-size: 18px; font-weight: 800; color: var(--warn);
+  margin-bottom: 16px; letter-spacing: -0.01em;
+}
+.legal-notice p { font-size: 14.5px; color: var(--text); line-height: 1.75; margin-bottom: 12px; }
+.legal-notice ol {
+  font-size: 14.5px; color: var(--text); line-height: 1.85;
+  padding-left: 20px; margin: 12px 0;
+}
+.legal-notice ol li { margin-bottom: 4px; }
+.legal-notice a { color: var(--primary); font-weight: 600; text-decoration: underline; }
+
+/* 신뢰 강화 */
+.trust-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.trust-card { background:white; border:1px solid var(--border-soft); border-radius:14px; padding:24px 18px; text-align:center; }
+.trust-card .emoji { font-size:32px; margin-bottom:10px; display:block; }
+.trust-card h4 { font-size:15px; font-weight:700; margin-bottom:6px; }
+.trust-card p { font-size:12.5px; color:var(--text-soft); line-height:1.55; }
+
+/* CTA */
+.cta-section { padding:80px 0; text-align:center; }
+.cta-card { background:linear-gradient(135deg,var(--accent-soft) 0%,var(--bg-cream) 100%); border-radius:24px; padding:48px 32px; border:1px solid var(--border-soft); }
+.cta-card h2 { font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-0.02em; margin-bottom:12px; }
+.cta-card p { font-size:15px; color:var(--text-soft); margin-bottom:24px; }
+.cta-btn-group { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn-primary { display:inline-flex; align-items:center; gap:8px; background:var(--primary); color:white !important; padding:14px 28px; border-radius:100px; font-size:14px; font-weight:700; transition:all 0.2s; min-height:48px; }
+.btn-primary:hover { background:var(--primary-dark); transform:translateY(-2px); }
+.btn-secondary { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--text) !important; padding:14px 24px; border-radius:100px; font-size:14px; font-weight:600; border:1.5px solid var(--border); transition:all 0.2s; min-height:48px; }
+.btn-secondary:hover { border-color:var(--primary); color:var(--primary) !important; }
+
+.intermediary-notice { background:var(--bg-cream); border-top:1px solid var(--border-soft); padding:22px 0; }
+.intermediary-notice p { font-size:13px; color:var(--text-soft); line-height:1.7; text-align:center; max-width:900px; margin:0 auto; padding:0 24px; }
+footer { background:#1A0A18; color:rgba(255,255,255,0.7); padding:48px 0 32px; font-size:13px; }
+.footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; margin-bottom:36px; }
+.footer-brand h3 { font-family:'Fraunces',serif; color:white; font-size:18px; font-weight:700; margin-bottom:10px; }
+.footer-brand p { font-size:13px; line-height:1.7; max-width:320px; }
+footer h5 { color:white; font-size:13px; font-weight:700; margin-bottom:14px; letter-spacing:0.04em; }
+footer ul { list-style:none; }
+footer li { padding:5px 0; }
+footer a { color:rgba(255,255,255,0.6); transition:color 0.18s; }
+footer a:hover { color:var(--accent); }
+.footer-info { padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7; }
+
+@media (max-width:1024px) {
+  .steps-grid-3 { grid-template-columns:1fr; }
+  .trust-grid { grid-template-columns:repeat(2,1fr); }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:768px) {
+  .container { padding:0 20px; }
+  .nav-inner { padding:12px 20px; }
+  .nav-links { display:none; }
+  .nav-hamburger { display:inline-flex; }
+  section { padding:50px 0; }
+  .hero { padding:110px 0 50px; }
+  .popular-grid { grid-template-columns:1fr; }
+  .legal-notice { padding: 22px 20px; }
+  .compare-table th, .compare-table td { padding:12px 14px; font-size:13px; }
+  .footer-grid { grid-template-columns:1fr; gap:28px; }
+  .cta-card { padding:36px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-mark">S</span> 살롱마켓</a>
+    <ul class="nav-links">
+      <li><a href="/">홈</a></li>
+      <li><a href="/guide">창업</a></li>
+      <li><a href="/closure-guide">폐업</a></li>
+      <li><a href="/auction" class="active">경매</a></li>
+      <li><a href="/calculator">계산기</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/closure-cases">사례</a></li>
+      <li><a href="/mou">협회 MOU</a></li>
+    </ul>
+    <a href="/#signup" class="nav-cta">알림 받기</a>
+    <button class="nav-hamburger" aria-label="메뉴 열기" onclick="document.querySelector('.nav-links').style.display='flex';this.style.display='none';">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="section-tag">Live Auction</div>
+      <h1 class="hero-title">미용 장비,<br><span class="highlight">경매로 제값 받으세요</span></h1>
+      <p class="hero-sub">22개 카테고리 · 즉시구매 + 실시간 경매 + AI 가격 추천. 평균 호가 대비 +20~40% 회수 사례.</p>
+    </div>
+  </div>
+</section>
+
+<section class="steps-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-title">경매 작동 방식 3단계</h2>
+      <p class="section-sub">등록 5분 · 자동 입찰 알림 · 마감 시 자동 낙찰. 모든 절차가 앱 안에서 진행됩니다.</p>
+    </div>
+    <div class="steps-grid-3">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>등록</h3>
+        <p>사진 3~10장 + 가격 + 마감 시간 설정. AI 가격 추천이 카테고리·지역·상태 기반으로 적정 시작가 제안.</p>
+        <span class="time">⏱ 5분 소요</span>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>입찰</h3>
+        <p>관심 등록자 + 키워드 매칭 유저에게 FCM 자동 알림. 마감 1시간 전 자동 임박 알림으로 입찰 가속.</p>
+        <span class="time">🔔 자동 알림</span>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>낙찰</h3>
+        <p>마감 시 최고가 입찰자 자동 낙찰. 채팅방이 자동 생성되고 시스템 메시지로 거래 시작.</p>
+        <span class="time">⚡ 자동 처리</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Comparison</div>
+      <h2 class="section-title">경매 vs 즉시구매</h2>
+      <p class="section-sub">상황에 맞는 방식을 선택하세요. 한 상품에 두 옵션을 동시에 걸 수도 있습니다.</p>
+    </div>
+    <div class="compare-table">
+      <table>
+        <thead>
+          <tr><th>항목</th><th class="col-auction">경매</th><th>즉시구매</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>가격 결정</strong></td><td class="us">입찰자 경쟁</td><td>판매자 고정</td></tr>
+          <tr><td><strong>회수 기간</strong></td><td class="us">1~7일 (마감 설정)</td><td>즉시 ~ N일</td></tr>
+          <tr><td><strong>회수율</strong></td><td class="us">호가 대비 +20~40%</td><td>호가 100%</td></tr>
+          <tr><td><strong>추천 케이스</strong></td><td class="us">인기 장비 · 희소 모델</td><td>빠른 처분 · 표준 모델</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="popular-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Popular Items</div>
+      <h2 class="section-title">업종별 인기 경매 장비</h2>
+      <p class="section-sub">실제 거래 데이터 기반 카테고리별 활성 매물.</p>
+    </div>
+    <div class="popular-grid">
+      <div class="popular-card"><div class="cat">헤어</div><div class="items">1순위 <strong>헤어체어</strong> · 2순위 <strong>샴푸대</strong> · 3순위 <strong>매직기</strong></div></div>
+      <div class="popular-card"><div class="cat">네일</div><div class="items">1순위 <strong>페디큐어 의자</strong> · 2순위 <strong>UV램프 세트</strong></div></div>
+      <div class="popular-card"><div class="cat">피부 (에스테틱)</div><div class="items">1순위 <strong>고주파기</strong> · 2순위 <strong>LED</strong> · 3순위 <strong>침대 세트</strong></div></div>
+      <div class="popular-card"><div class="cat">속눈썹</div><div class="items">1순위 <strong>침대 + 라이트 세트</strong></div></div>
+      <div class="popular-card"><div class="cat">왁싱 / 두피</div><div class="items">1순위 <strong>침대 / 마사지베드</strong></div></div>
+      <div class="popular-card"><div class="cat">메이크업</div><div class="items">1순위 <strong>화장대 + 라이트</strong></div></div>
+      <div class="popular-card"><div class="cat">미용교육원</div><div class="items"><strong>일괄 인수 패키지</strong> (실습 장비 20대+)</div></div>
+      <div class="popular-card"><div class="cat">공통</div><div class="items">드라이어 · 가위 세트 · 미러 · 보관함 (전 업종 공통)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⚠️ 청약철회 제한 법적 의무 박스 -->
+<section class="legal-notice-section">
+  <div class="container">
+    <div class="legal-notice">
+      <span class="icon">⚠️</span>
+      <h3>경매 거래의 청약철회 제한</h3>
+      <p>경매로 낙찰된 거래는 「전자상거래 등에서의 소비자보호에 관한 법률」 <strong>제17조 제2항 제5호</strong>에 따라 청약철회가 제한될 수 있습니다.</p>
+      <p style="margin-top:14px;"><strong>입찰 전 반드시 확인할 사항:</strong></p>
+      <ol>
+        <li>상품 상세 사진과 설명을 충분히 확인</li>
+        <li>판매자에게 채팅으로 상태 질문 (입찰 전)</li>
+        <li>살롱컬러 등급 · 응답률 · 거래 횟수 등 신뢰 지표 확인</li>
+        <li>운송 비용은 별도 (살롱파트너로 견적 가능)</li>
+      </ol>
+      <p style="margin-top:14px;">자세한 내용은 <a href="/terms">이용약관 제5조 및 제8조</a>를 참고하세요.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Trust & Safety</div>
+      <h2 class="section-title">안심하고 거래할 수 있는 이유</h2>
+      <p class="section-sub">살롱마켓이 거래 신뢰를 강화하는 4가지 장치.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="emoji">🏅</span>
+        <h4>살롱컬러 등급</h4>
+        <p>안전결제 거래 건수 기반 8단계 등급으로 신뢰도 확인.</p>
+      </div>
+      <div class="trust-card">
+        <span class="emoji">⏱</span>
+        <h4>응답률 자동 추적</h4>
+        <p>24시간 이내 응답률 표시. 답답함 없는 거래.</p>
+      </div>
+      <div class="trust-card">
+        <span class="emoji">🛡</span>
+        <h4>신고 / 차단 시스템</h4>
+        <p>채팅 내 즉시 신고 + 차단으로 부적절한 거래 차단.</p>
+      </div>
+      <div class="trust-card">
+        <span class="emoji">🤝</span>
+        <h4>분쟁 조정</h4>
+        <p>통신판매중개자로서 합리적 조정 절차 지원.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <h2>지금 첫 경매 등록 5분 안에 시작</h2>
+      <p>앱 출시 후 바로 경매 등록 가능. AI 가격 추천이 시작가를 제안합니다.</p>
+      <div class="cta-btn-group">
+        <a href="/#signup" class="btn-primary">앱 출시 알림 받기 →</a>
+        <a href="/calculator" class="btn-secondary">권리금 계산기</a>
+        <a href="/faq" class="btn-secondary">자주 묻는 질문</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="intermediary-notice">
+  <p>살롱마켓(SalonMarket)은 통신판매의 당사자가 아닌 <strong>통신판매중개자</strong>이며, 상품의 거래정보 및 거래에 관한 책임은 판매 회원에게 있습니다.</p>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>살롱마켓 SalonMarket</h3>
+        <p>미용업계 최초 거래 플랫폼. 폐업하는 원장님의 장비가 창업하는 원장님께.</p>
+      </div>
+      <div>
+        <h5>SERVICE</h5>
+        <ul>
+          <li><a href="/guide">창업 가이드</a></li>
+          <li><a href="/closure-guide">폐업 가이드</a></li>
+          <li><a href="/auction">경매 안내</a></li>
+          <li><a href="/calculator">권리금 계산기</a></li>
+          <li><a href="/faq">자주 묻는 질문</a></li>
+          <li><a href="/closure-cases">폐업 사례</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>LEGAL</h5>
+        <ul>
+          <li><a href="/terms">이용약관</a></li>
+          <li><a href="/privacy">개인정보처리방침</a></li>
+          <li><a href="/deletion">계정 삭제</a></li>
+          <li><a href="/mou">협회 MOU</a></li>
+          <li><a href="mailto:cs.salonmarket@gmail.com">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      상호 살롱마켓(SalonMarket) · 대표 이재근 · 사업자등록번호 510-11-26013<br>
+      통신판매업 신고: 20260506-83139508 · 구매안전서비스 등록: 제 A17-260507-1154호<br>
+      경기도 화성시 동탄대로24길 199 · cs.salonmarket@gmail.com · 010-5744-3106<br>
+      © 2026 SalonMarket. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

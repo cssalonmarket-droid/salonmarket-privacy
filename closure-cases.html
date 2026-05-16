@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="실제 사례 기반 가상 시나리오 5건. 강남 헤어샵 · 홍대 네일샵 · 부산 에스테틱 · 대구 속눈썹 · 광주 미용교육원 폐업 사례.">
+<meta name="theme-color" content="#4A1942">
+<meta property="og:title" content="미용실 폐업 사례 5건 — 살롱마켓">
+<meta property="og:description" content="실제 데이터 기반 가상 폐업 시나리오 5건. 회수 금액 + 단계별 진행.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://salonmarket.kr/closure-cases">
+<meta property="og:image" content="https://salonmarket.kr/og-image.png">
+<title>미용실 폐업 사례 5건 — 강남 헤어 · 홍대 네일 · 부산 피부 | 살롱마켓</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root { --primary:#4A1942; --primary-dark:#2D0D27; --accent:#E94E8B; --accent-soft:#F8E8F0; --bg:#FEFEFE; --bg-soft:#FAF7F9; --bg-cream:#FFF8F5; --text:#1A0A18; --text-soft:#5A4A56; --text-mute:#8A7A86; --border:#E8E0E5; --border-soft:#F0EAEE; --warn:#C78A2B; --warn-bg:#FFF8E5; --success:#2D7D5A; --success-soft:#E5F5EB; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif; color:var(--text); background:var(--bg); line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+a { color:inherit; text-decoration:none; }
+button { font-family:inherit; cursor:pointer; border:none; background:none; }
+.mono { font-variant-numeric:tabular-nums; }
+.container { max-width:1000px; margin:0 auto; padding:0 24px; }
+nav { position:fixed; top:0; left:0; right:0; background:rgba(254,254,254,0.85); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid var(--border); z-index:100; }
+.nav-inner { display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1100px; margin:0 auto; gap:20px; }
+.logo { display:inline-flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-size:20px; font-weight:700; color:var(--primary); }
+.logo-mark { width:28px; height:28px; background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%); border-radius:8px; display:inline-flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:14px; }
+.nav-links { display:flex; gap:24px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--text-soft); transition:color 0.18s; }
+.nav-links a:hover { color:var(--primary); }
+.nav-links a.active { color:var(--primary); font-weight:600; }
+.nav-cta { background:var(--primary); color:white !important; padding:10px 18px; border-radius:100px; font-size:13px; font-weight:600; transition:all 0.2s; }
+.nav-cta:hover { background:var(--primary-dark); transform:translateY(-1px); }
+.nav-hamburger { display:none; width:40px; height:40px; border-radius:10px; background:var(--bg-soft); align-items:center; justify-content:center; color:var(--primary); }
+.hero { padding:130px 0 50px; background:radial-gradient(ellipse at top right,rgba(233,78,139,0.08) 0%,transparent 50%),var(--bg); }
+.hero-content { max-width:800px; margin:0 auto; text-align:center; }
+.section-tag { display:inline-block; color:var(--accent); font-size:12px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:16px; }
+h1.hero-title { font-size:clamp(30px,4.5vw,46px); font-weight:800; line-height:1.18; letter-spacing:-0.03em; margin-bottom:18px; }
+h1.hero-title .highlight { background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.hero-sub { font-size:clamp(15px,1.7vw,18px); color:var(--text-soft); line-height:1.65; font-weight:500; }
+
+/* 가상 사례 명시 — 필수 */
+.virtual-notice-section { padding:20px 0 30px; }
+.virtual-notice {
+  background: var(--warn-bg);
+  border: 2px solid var(--warn);
+  border-radius: 14px;
+  padding: 18px 24px;
+  max-width: 880px; margin: 0 auto;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.virtual-notice .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.virtual-notice p { font-size: 14px; color: var(--text); line-height: 1.7; }
+.virtual-notice strong { color: var(--warn); }
+
+/* Cases */
+.cases-section { padding:30px 0 70px; }
+.case-grid { display: flex; flex-direction: column; gap: 28px; }
+.case-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 8px 24px rgba(26,10,24,0.04);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.case-card:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(74,25,66,0.08); }
+.case-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white; padding: 24px 28px;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.case-num {
+  font-family: 'Fraunces', serif;
+  background: rgba(255,255,255,0.18);
+  color: white; padding: 4px 14px;
+  border-radius: 100px; font-size: 13px; font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.case-header h2 { font-size: 19px; font-weight: 700; flex: 1; min-width: 220px; }
+.case-meta-chip {
+  background: var(--accent); color: white;
+  padding: 4px 12px; border-radius: 100px;
+  font-size: 12px; font-weight: 700;
+}
+.case-body { padding: 26px 28px; }
+.case-info-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-bottom: 22px;
+}
+.case-info {
+  background: var(--bg-cream); border-radius: 10px;
+  padding: 12px 14px; border-left: 3px solid var(--accent);
+}
+.case-info .label {
+  font-size: 11px; font-weight: 700; color: var(--accent);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px;
+}
+.case-info .value { font-size: 13.5px; color: var(--text); font-weight: 600; line-height: 1.5; }
+.case-section-title {
+  font-size: 13px; font-weight: 800; color: var(--primary);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin: 18px 0 8px;
+}
+.case-section-title:first-of-type { margin-top: 0; }
+.case-text { font-size: 14.5px; color: var(--text-soft); line-height: 1.7; }
+.case-text strong { color: var(--text); font-weight: 600; }
+.case-steps {
+  background: var(--bg-soft); border-radius: 12px;
+  padding: 16px 20px; margin-top: 8px;
+}
+.case-steps li {
+  list-style: none; padding: 6px 0;
+  font-size: 14px; color: var(--text); line-height: 1.65;
+  padding-left: 22px; position: relative;
+}
+.case-steps li::before {
+  content: '→'; position: absolute; left: 0; top: 6px;
+  color: var(--accent); font-weight: 700;
+}
+.case-result {
+  background: var(--success-soft); border-radius: 12px;
+  padding: 18px 22px; margin-top: 14px;
+  border-left: 4px solid var(--success);
+}
+.case-result h4 {
+  font-size: 12px; font-weight: 800; color: var(--success);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;
+}
+.case-result p { font-size: 14.5px; color: var(--text); font-weight: 500; line-height: 1.6; }
+.case-result .total {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 700; color: var(--success);
+  margin-top: 4px; font-variant-numeric: tabular-nums;
+}
+
+/* CTA */
+.cta-section { padding:60px 0; text-align:center; }
+.cta-card { background:linear-gradient(135deg,var(--accent-soft) 0%,var(--bg-cream) 100%); border-radius:24px; padding:48px 32px; border:1px solid var(--border-soft); }
+.cta-card h2 { font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-0.02em; margin-bottom:12px; }
+.cta-card p { font-size:15px; color:var(--text-soft); margin-bottom:24px; }
+.cta-btn-group { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn-primary { display:inline-flex; align-items:center; gap:8px; background:var(--primary); color:white !important; padding:14px 28px; border-radius:100px; font-size:14px; font-weight:700; transition:all 0.2s; min-height:48px; }
+.btn-primary:hover { background:var(--primary-dark); transform:translateY(-2px); }
+.btn-secondary { display:inline-flex; align-items:center; gap:8px; background:white; color:var(--text) !important; padding:14px 24px; border-radius:100px; font-size:14px; font-weight:600; border:1.5px solid var(--border); transition:all 0.2s; min-height:48px; }
+.btn-secondary:hover { border-color:var(--primary); color:var(--primary) !important; }
+
+.intermediary-notice { background:var(--bg-cream); border-top:1px solid var(--border-soft); padding:22px 0; }
+.intermediary-notice p { font-size:13px; color:var(--text-soft); line-height:1.7; text-align:center; max-width:900px; margin:0 auto; padding:0 24px; }
+footer { background:#1A0A18; color:rgba(255,255,255,0.7); padding:48px 0 32px; font-size:13px; }
+.footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; margin-bottom:36px; max-width:1100px; margin-left:auto; margin-right:auto; padding:0 24px; }
+.footer-brand h3 { font-family:'Fraunces',serif; color:white; font-size:18px; font-weight:700; margin-bottom:10px; }
+.footer-brand p { font-size:13px; line-height:1.7; max-width:320px; }
+footer h5 { color:white; font-size:13px; font-weight:700; margin-bottom:14px; letter-spacing:0.04em; }
+footer ul { list-style:none; }
+footer li { padding:5px 0; }
+footer a { color:rgba(255,255,255,0.6); transition:color 0.18s; }
+footer a:hover { color:var(--accent); }
+.footer-info { padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7; max-width:1100px; margin:0 auto; padding-left:24px; padding-right:24px; }
+
+@media (max-width:1024px) {
+  .case-info-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:768px) {
+  .container { padding:0 20px; }
+  .nav-inner { padding:12px 20px; }
+  .nav-links { display:none; }
+  .nav-hamburger { display:inline-flex; }
+  .hero { padding:110px 0 40px; }
+  .case-header { padding: 20px 22px; }
+  .case-body { padding: 22px; }
+  .footer-grid { grid-template-columns:1fr; gap:28px; padding:0 20px; }
+  .footer-info { padding-left:20px; padding-right:20px; }
+  .cta-card { padding:36px 22px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-mark">S</span> 살롱마켓</a>
+    <ul class="nav-links">
+      <li><a href="/">홈</a></li>
+      <li><a href="/guide">창업</a></li>
+      <li><a href="/closure-guide">폐업</a></li>
+      <li><a href="/auction">경매</a></li>
+      <li><a href="/calculator">계산기</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/closure-cases" class="active">사례</a></li>
+      <li><a href="/mou">협회 MOU</a></li>
+    </ul>
+    <a href="/#signup" class="nav-cta">알림 받기</a>
+    <button class="nav-hamburger" aria-label="메뉴 열기" onclick="document.querySelector('.nav-links').style.display='flex';this.style.display='none';">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="section-tag">Closure Cases</div>
+      <h1 class="hero-title">실제 사례 기반<br><span class="highlight">가상 시나리오 5건</span></h1>
+      <p class="hero-sub">강남 헤어샵 · 홍대 네일샵 · 부산 에스테틱 · 대구 속눈썹 · 광주 미용교육원. 단계별 회수 금액과 진행 흐름.</p>
+    </div>
+  </div>
+</section>
+
+<section class="virtual-notice-section">
+  <div class="container">
+    <div class="virtual-notice">
+      <span class="icon">ℹ️</span>
+      <p><strong>가상 시나리오 안내</strong> — 본 페이지의 사례는 실제 데이터를 기반으로 한 가상 시나리오이며, 특정 매장이나 개인을 지칭하지 않습니다. 회수 금액은 평균 범위 추정값이며 실제 거래에서는 매장 조건에 따라 변동됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cases-section">
+  <div class="container">
+    <div class="case-grid">
+
+      <!-- Case 1 -->
+      <article class="case-card">
+        <div class="case-header">
+          <span class="case-num">CASE 01</span>
+          <h2>강남 헤어샵 — 임대료 부담 폐업</h2>
+          <span class="case-meta-chip">헤어</span>
+        </div>
+        <div class="case-body">
+          <div class="case-info-grid">
+            <div class="case-info"><div class="label">업종</div><div class="value">헤어 · 25평</div></div>
+            <div class="case-info"><div class="label">위치</div><div class="value">서울 강남</div></div>
+            <div class="case-info"><div class="label">운영</div><div class="value">직원 4명</div></div>
+            <div class="case-info"><div class="label">정리 기간</div><div class="value">75일</div></div>
+          </div>
+          <div class="case-section-title">폐업 사유</div>
+          <p class="case-text">임대료 +30% 인상 + 매출 감소. <strong>6개월 내 정리 필요</strong>, 장비 8종 처분 부담.</p>
+          <div class="case-section-title">살롱마켓 활용 단계</div>
+          <ul class="case-steps">
+            <li>장비 일괄 등록 (3일) → 헤어체어 6대 경매 낙찰 (호가 1,800만 → <strong>낙찰 2,310만</strong>)</li>
+            <li>살롱파트너 철거 견적 3건 비교 → 320만 → <strong>280만</strong></li>
+            <li>샵매매 권리금 8,000만 등록 → 45일 후 <strong>6,500만 양도 성사</strong></li>
+          </ul>
+          <div class="case-result">
+            <h4>최종 회수</h4>
+            <p>장비 + 권리금 합산 (철거 비용 차감 후)</p>
+            <div class="total mono">8,530만원</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 2 -->
+      <article class="case-card">
+        <div class="case-header">
+          <span class="case-num">CASE 02</span>
+          <h2>홍대 네일샵 — 라이프 변화 폐업</h2>
+          <span class="case-meta-chip">네일</span>
+        </div>
+        <div class="case-body">
+          <div class="case-info-grid">
+            <div class="case-info"><div class="label">업종</div><div class="value">네일 · 8평</div></div>
+            <div class="case-info"><div class="label">위치</div><div class="value">서울 마포구</div></div>
+            <div class="case-info"><div class="label">운영</div><div class="value">1인샵</div></div>
+            <div class="case-info"><div class="label">정리 기간</div><div class="value">30일</div></div>
+          </div>
+          <div class="case-section-title">폐업 사유</div>
+          <p class="case-text">출산 + 육아 집중. <strong>단골 인계 / 화장품 재고 / 회원권 잔여</strong> 처리가 핵심 과제.</p>
+          <div class="case-section-title">살롱마켓 활용 단계</div>
+          <ul class="case-steps">
+            <li>단골 SNS 안내 → 살롱톡 커뮤니티에서 인수자 모집</li>
+            <li>장비 + 회원권 패키지 양도 (<strong>2,300만</strong>)</li>
+            <li>화장품 잔여 재고는 인수자에게 일괄 양도</li>
+          </ul>
+          <div class="case-result">
+            <h4>최종 회수</h4>
+            <p>장비 + 권리금 + 회원권 패키지</p>
+            <div class="total mono">2,300만원</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 3 -->
+      <article class="case-card">
+        <div class="case-header">
+          <span class="case-num">CASE 03</span>
+          <h2>부산 에스테틱 — 디지털 전환 폐업</h2>
+          <span class="case-meta-chip">피부</span>
+        </div>
+        <div class="case-body">
+          <div class="case-info-grid">
+            <div class="case-info"><div class="label">업종</div><div class="value">피부 · 20평</div></div>
+            <div class="case-info"><div class="label">위치</div><div class="value">부산 해운대</div></div>
+            <div class="case-info"><div class="label">운영</div><div class="value">직원 2명</div></div>
+            <div class="case-info"><div class="label">정리 기간</div><div class="value">60일</div></div>
+          </div>
+          <div class="case-section-title">폐업 사유</div>
+          <p class="case-text">1인샵 프리미엄 전환. <strong>고주파기 3대 + LED 마스크 5대 등 고가 장비</strong> 적정가 회수가 관건.</p>
+          <div class="case-section-title">살롱마켓 활용 단계</div>
+          <ul class="case-steps">
+            <li>AI 가격 추천으로 시작가 산정 → <strong>호가 대비 +25% 회수</strong></li>
+            <li>살롱지도로 동일 지역(부산) 매수자 발굴</li>
+            <li>신규 1인샵 입지로 일부 장비 이전</li>
+          </ul>
+          <div class="case-result">
+            <h4>최종 회수</h4>
+            <p>고가 장비 회수 (신규 1인샵 전환)</p>
+            <div class="total mono">3,100만원</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 4 -->
+      <article class="case-card">
+        <div class="case-header">
+          <span class="case-num">CASE 04</span>
+          <h2>대구 속눈썹샵 — 건강 사유 폐업</h2>
+          <span class="case-meta-chip">속눈썹</span>
+        </div>
+        <div class="case-body">
+          <div class="case-info-grid">
+            <div class="case-info"><div class="label">업종</div><div class="value">속눈썹 · 6평</div></div>
+            <div class="case-info"><div class="label">위치</div><div class="value">대구 중구</div></div>
+            <div class="case-info"><div class="label">운영</div><div class="value">1인샵</div></div>
+            <div class="case-info"><div class="label">정리 기간</div><div class="value">15일 (긴급)</div></div>
+          </div>
+          <div class="case-section-title">폐업 사유</div>
+          <p class="case-text">시력 문제로 <strong>단기간(2주) 내 정리 필요</strong>. 폐업 패키지 위저드 활용.</p>
+          <div class="case-section-title">살롱마켓 활용 단계</div>
+          <ul class="case-steps">
+            <li>폐업 패키지 위저드로 4단계 동시 진행</li>
+            <li>장비 즉시구매로 빠른 회수 (<strong>650만</strong>)</li>
+            <li>권리금 양도 (14일 만에 <strong>1,800만</strong>)</li>
+          </ul>
+          <div class="case-result">
+            <h4>최종 회수</h4>
+            <p>15일 만에 완전 정리 — 폐업 패키지 활용</p>
+            <div class="total mono">2,450만원</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 5 -->
+      <article class="case-card">
+        <div class="case-header">
+          <span class="case-num">CASE 05</span>
+          <h2>광주 미용교육원 — 사업 전환</h2>
+          <span class="case-meta-chip">교육원</span>
+        </div>
+        <div class="case-body">
+          <div class="case-info-grid">
+            <div class="case-info"><div class="label">업종</div><div class="value">미용교육원 · 60평</div></div>
+            <div class="case-info"><div class="label">위치</div><div class="value">광주 서구</div></div>
+            <div class="case-info"><div class="label">운영</div><div class="value">강사 3명</div></div>
+            <div class="case-info"><div class="label">정리 기간</div><div class="value">45일</div></div>
+          </div>
+          <div class="case-section-title">폐업 사유</div>
+          <p class="case-text">온라인 교육 전환. <strong>실습 장비 다량(헤어체어 20대 + 샴푸대 8대 등) + 등록생 인계</strong>가 핵심.</p>
+          <div class="case-section-title">살롱마켓 활용 단계</div>
+          <ul class="case-steps">
+            <li>일괄 인수자 발굴 (살롱톡 + 살롱마켓 매물)</li>
+            <li>살롱파트너 운반 견적 → 일괄 이전</li>
+            <li>등록생 인계 협의 → 인수자가 <strong>교육 승계</strong></li>
+          </ul>
+          <div class="case-result">
+            <h4>최종 회수</h4>
+            <p>장비 + 권리금 + 등록생 인계 패키지</p>
+            <div class="total mono">1.2억원</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <h2>당신도 정리할 수 있어요</h2>
+      <p>폐업 패키지 4단계 위저드로 매장정보 → 장비 → 견적 → 매장매매를 한 번에.</p>
+      <div class="cta-btn-group">
+        <a href="/#signup" class="btn-primary">앱 출시 알림 받기 →</a>
+        <a href="/closure-guide" class="btn-secondary">폐업 가이드</a>
+        <a href="/calculator" class="btn-secondary">권리금 계산하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="intermediary-notice">
+  <p>살롱마켓(SalonMarket)은 통신판매의 당사자가 아닌 <strong>통신판매중개자</strong>이며, 상품의 거래정보 및 거래에 관한 책임은 판매 회원에게 있습니다.</p>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>살롱마켓 SalonMarket</h3>
+      <p>미용업계 최초 거래 플랫폼. 폐업하는 원장님의 장비가 창업하는 원장님께.</p>
+    </div>
+    <div>
+      <h5>SERVICE</h5>
+      <ul>
+        <li><a href="/guide">창업 가이드</a></li>
+        <li><a href="/closure-guide">폐업 가이드</a></li>
+        <li><a href="/auction">경매 안내</a></li>
+        <li><a href="/calculator">권리금 계산기</a></li>
+        <li><a href="/faq">자주 묻는 질문</a></li>
+        <li><a href="/closure-cases">폐업 사례</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>LEGAL</h5>
+      <ul>
+        <li><a href="/terms">이용약관</a></li>
+        <li><a href="/privacy">개인정보처리방침</a></li>
+        <li><a href="/deletion">계정 삭제</a></li>
+        <li><a href="/mou">협회 MOU</a></li>
+        <li><a href="mailto:cs.salonmarket@gmail.com">고객센터</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-info">
+    상호 살롱마켓(SalonMarket) · 대표 이재근 · 사업자등록번호 510-11-26013<br>
+    통신판매업 신고: 20260506-83139508 · 구매안전서비스 등록: 제 A17-260507-1154호<br>
+    경기도 화성시 동탄대로24길 199 · cs.salonmarket@gmail.com · 010-5744-3106<br>
+    © 2026 SalonMarket. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>

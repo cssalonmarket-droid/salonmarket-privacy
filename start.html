@@ -727,8 +727,114 @@ footer {
   font-weight: 500;
 }
 
+/* ── Entry Points (타깃별) ─────────────────────── */
+.entry-section {
+  padding: 60px 0 40px;
+  background: var(--bg);
+}
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.entry-card {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  display: block;
+}
+.entry-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 36px rgba(74,25,66,0.08);
+}
+.entry-emoji {
+  font-size: 36px;
+  margin-bottom: 12px;
+  display: block;
+}
+.entry-card h3 {
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--primary);
+}
+.entry-card p {
+  font-size: 13.5px;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+/* ── More Cards (더 알아보기) ──────────────────── */
+.more-section {
+  padding: 60px 0;
+  background: var(--bg-soft);
+}
+.more-section h2 {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.more-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.more-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: all 0.2s;
+  display: block;
+}
+.more-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(74,25,66,0.08);
+}
+.more-card .ic {
+  font-size: 24px;
+  margin-bottom: 8px;
+  display: block;
+}
+.more-card .ttl {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── 통신판매중개자 안내 ──────────────────────── */
+.intermediary-notice {
+  background: var(--bg-cream);
+  border-top: 1px solid var(--border);
+  padding: 22px 0;
+}
+.intermediary-notice p {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.7;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.intermediary-notice strong { color: var(--primary); font-weight: 700; }
+
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 768px) {
+  .entry-grid { grid-template-columns: 1fr; }
+  .more-grid { grid-template-columns: repeat(2, 1fr); }
   .container { padding: 0 20px; }
   .nav-inner { padding: 12px 20px; }
   .hero { padding: 100px 0 60px; }
@@ -853,6 +959,29 @@ footer {
           기능 살펴보기 →
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Entry Points (타깃별 진입) ─────────────────── -->
+<section class="entry-section">
+  <div class="container">
+    <div class="entry-grid">
+      <a href="/guide" class="entry-card">
+        <span class="entry-emoji">🚀</span>
+        <h3>신규 창업</h3>
+        <p>8개 업종 창업 가이드</p>
+      </a>
+      <a href="/auction" class="entry-card">
+        <span class="entry-emoji">💼</span>
+        <h3>운영 중</h3>
+        <p>장비 거래 + AI 시세</p>
+      </a>
+      <a href="/closure-guide" class="entry-card">
+        <span class="entry-emoji">🏁</span>
+        <h3>폐업 준비</h3>
+        <p>5단계 통합 정리</p>
+      </a>
     </div>
   </div>
 </section>
@@ -992,6 +1121,35 @@ footer {
   </div>
 </section>
 
+<!-- ── More Cards (더 알아보기) ────────────────────── -->
+<section class="more-section">
+  <div class="container">
+    <h2>더 알아보기</h2>
+    <div class="more-grid">
+      <a href="/guide" class="more-card">
+        <span class="ic">🚀</span>
+        <span class="ttl">창업 가이드</span>
+      </a>
+      <a href="/auction" class="more-card">
+        <span class="ic">🪑</span>
+        <span class="ttl">경매 안내</span>
+      </a>
+      <a href="/calculator" class="more-card">
+        <span class="ic">📊</span>
+        <span class="ttl">권리금 계산기</span>
+      </a>
+      <a href="/faq" class="more-card">
+        <span class="ic">💬</span>
+        <span class="ttl">자주 묻는 질문</span>
+      </a>
+      <a href="/closure-cases" class="more-card">
+        <span class="ic">📁</span>
+        <span class="ttl">폐업 사례</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ── MOU Banner ────────────────────────────────── -->
 <section class="mou-banner">
   <div class="container">
@@ -1011,6 +1169,11 @@ footer {
   </div>
 </section>
 
+<!-- ── 통신판매중개자 안내 ──────────────────────── -->
+<div class="intermediary-notice">
+  <p>살롱마켓(SalonMarket)은 통신판매의 당사자가 아닌 <strong>통신판매중개자</strong>이며, 상품의 거래정보 및 거래에 관한 책임은 판매 회원에게 있습니다.</p>
+</div>
+
 <!-- ── Footer ────────────────────────────────────── -->
 <footer>
   <div class="container">
@@ -1022,20 +1185,26 @@ footer {
           폐업하는 원장님의 장비가 창업하는 원장님께.
         </p>
       </div>
-      
+
       <div class="footer-links">
+        <a href="/guide">창업</a>
+        <a href="/closure-guide">폐업</a>
+        <a href="/auction">경매</a>
+        <a href="/calculator">계산기</a>
+        <a href="/faq">FAQ</a>
+        <a href="/closure-cases">사례</a>
         <a href="/mou">협회 MOU</a>
-        <a href="/terms.html">이용약관</a>
-        <a href="/index.html">개인정보처리방침</a>
-        <a href="/deletion.html">계정 삭제</a>
+        <a href="/terms">이용약관</a>
+        <a href="/privacy">개인정보처리방침</a>
+        <a href="/deletion">계정 삭제</a>
         <a href="mailto:cs.salonmarket@gmail.com">고객센터</a>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
-      살롱마켓 (SalonMarket) · 대표 이재근 · 사업자등록번호 510-11-26013<br>
-      경기도 화성시 동탄대로24길 199 · 통신판매업 신고: 20260506-83139508<br>
-      문의: cs.salonmarket@gmail.com · 010-5744-3106<br>
+      상호 살롱마켓(SalonMarket) · 대표 이재근 · 사업자등록번호 510-11-26013<br>
+      통신판매업 신고: 20260506-83139508 · 구매안전서비스 등록: 제 A17-260507-1154호<br>
+      경기도 화성시 동탄대로24길 199 · cs.salonmarket@gmail.com · 010-5744-3106<br>
       © 2026 SalonMarket. All rights reserved.
     </div>
   </div>
