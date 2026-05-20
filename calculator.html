@@ -110,6 +110,11 @@ h1.hero-title .highlight { background:linear-gradient(135deg,var(--primary) 0%,v
   font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700;
   color: var(--primary); font-variant-numeric: tabular-nums;
 }
+.result-submeta {
+  font-size: 11.5px; color: var(--text-mute); text-align: right;
+  margin-top: -6px; padding: 0 0 8px;
+  border-bottom: 1px solid var(--border-soft);
+}
 .result-total {
   background: white; border-radius: 12px;
   padding: 18px 20px; margin-top: 14px;
@@ -262,6 +267,12 @@ footer a:hover { color:var(--accent); }
         </div>
 
         <div class="field">
+          <label for="profitMargin">영업이익률 (%) <span class="req">*</span></label>
+          <input id="profitMargin" type="number" min="10" max="40" value="20" step="1" required>
+          <div class="hint">헤어샵 평균 15~25% / 네일샵 20~30% / 속눈썹·왁싱 25~35%</div>
+        </div>
+
+        <div class="field">
           <label for="equipment">장비 가치 (만원) <span class="req">*</span></label>
           <input id="equipment" type="number" min="100" max="20000" placeholder="예: 2000" required>
           <div class="hint">현재 장비 시세 추정값</div>
@@ -291,6 +302,9 @@ footer a:hover { color:var(--accent); }
           <div class="result-row">
             <span class="label">영업권리금</span>
             <span class="value mono" id="r-op">-</span>
+          </div>
+          <div class="result-submeta">
+            적용 영업이익률: <span id="r-pm">-</span>%
           </div>
           <div class="result-row">
             <span class="label">시설권리금</span>
@@ -400,17 +414,26 @@ function calcPremium(e) {
   const loc = document.getElementById('location').value;
   const area = parseFloat(document.getElementById('area').value);
   const rev = parseFloat(document.getElementById('revenue').value);
+  const pm = parseFloat(document.getElementById('profitMargin').value);
   const eq = parseFloat(document.getElementById('equipment').value);
   const period = document.getElementById('period').value;
 
-  if (!cat || !loc || !area || !rev || !eq || !period) return false;
+  if (!cat || !loc || !area || !rev || !pm || !eq || !period) return false;
+  // 영업이익률 입력 범위 검증 (10~40%)
+  if (pm < 10 || pm > 40) {
+    alert('영업이익률은 10~40% 범위로 입력해주세요.');
+    return false;
+  }
 
-  const opRights = rev * PROFIT_RATE[cat] * PERIOD_MULT[period];
+  // 영업권리금 = 월매출 × (영업이익률/100) × 기간배수
+  // (이전 PROFIT_RATE[cat] 하드코딩 → 사용자 입력 pm 으로 교체)
+  const opRights = rev * (pm / 100) * PERIOD_MULT[period];
   const fcRights = eq * 0.7; // 감가상각 30%
   const lcRights = area * 30 * LOC_MULT[loc]; // 평당 30만원 기준
   const total = opRights + fcRights + lcRights;
 
   document.getElementById('r-op').textContent = formatKRW(opRights);
+  document.getElementById('r-pm').textContent = pm;
   document.getElementById('r-fc').textContent = formatKRW(fcRights);
   document.getElementById('r-lc').textContent = formatKRW(lcRights);
   document.getElementById('r-total').textContent = formatKRW(total);
