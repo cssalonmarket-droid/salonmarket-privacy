@@ -1,4 +1,7 @@
 
-# ¹é¾÷ ÆÄÀÏ
+# ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 *.bak
 *.bak.*
+
+# Firebase CLI cache
+.firebase/
