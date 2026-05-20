@@ -36,7 +36,7 @@
     {"@type":"Question","name":"살롱파트너 견적은 어떻게 받나요?","acceptedAnswer":{"@type":"Answer","text":"앱에서 견적 요청을 등록하면 해당 지역 + 서비스 유형이 일치하는 파트너에게 자동 알림이 전송됩니다. 24시간 이내 무응답 시 추가 알림이 발송되며, 7일 후 자동 마감됩니다."}},
     {"@type":"Question","name":"살롱파트너의 시공 품질은 누가 보장하나요?","acceptedAnswer":{"@type":"Answer","text":"살롱마켓은 사업자등록증 심사를 통해 파트너 자격을 확인합니다. 단, 시공 품질·일정·약속 이행은 해당 파트너 책임이며, 살롱마켓은 매칭 중개자 역할만 수행합니다. 분쟁 시 합리적 조정을 지원합니다."}},
     {"@type":"Question","name":"폐업 패키지는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"미용실 폐업 시 장비 정리 → 매장 매매 → 철거 견적을 한 번에 진행하는 통합 위저드입니다. 앱 → 마이페이지 → 폐업 패키지 시작으로 진입하며, 4단계로 진행됩니다."}},
-    {"@type":"Question","name":"권리금은 어떻게 측정하나요?","acceptedAnswer":{"@type":"Answer","text":"영업권리금(매출 × 영업이익률 × 기간) + 시설권리금(장비 감가) + 바닥권리금(입지)으로 구성됩니다. 살롱마켓 권리금 계산기에서 간단히 추정할 수 있으며, 실제 거래가는 매장 상태에 따라 변동됩니다."}},
+    {"@type":"Question","name":"권리금은 어떻게 측정하나요?","acceptedAnswer":{"@type":"Answer","text":"권리금은 3가지 요소로 구성됩니다. (1) 시설권리금: 시설투자금액 × 0.8^영업연수, 매년 약 20% 감가상각, 3년 이상 시 거의 인정 X. (2) 영업권리금: 월순이익 × 6~10개월. 뷰티업종은 원장님 개인 역량 의존도가 높아 1인 운영 샵은 배수가 낮음 (1인 ×6 / 직원 1~2명 ×8 / 직원 3명+ ×10). 원장 이전 시 단골 이동 가능성 고려 필요. (3) 바닥권리금: 평수 × 상권 평당 단가. 서울 A급 100~200만원, 수도권/광역시 30~80만원, 중소도시 10~50만원. 살롱마켓 권리금 계산기에서 추정 가능."}},
     {"@type":"Question","name":"폐업 시 세금은 어떻게 처리하나요?","acceptedAnswer":{"@type":"Answer","text":"폐업일로부터 25일 이내 부가가치세 신고, 5월에 종합소득세 신고가 필요합니다. 폐업 전 세무사 상담을 권장하며, 살롱마켓 거래 정산 내역은 마이페이지에서 확인 가능합니다."}}
   ]
 }
@@ -115,12 +115,18 @@ h1.hero-title .highlight { background:linear-gradient(135deg,var(--primary) 0%,v
   max-height:0; overflow:hidden;
   transition:max-height 0.3s ease;
 }
-.faq-item.open .faq-a { max-height:500px; }
+.faq-item.open .faq-a { max-height:1400px; }
 .faq-a-inner {
   padding:0 22px 22px 60px;
   font-size:14.5px; color:var(--text-soft); line-height:1.75;
 }
 .faq-a-inner a { color:var(--primary); font-weight:600; text-decoration:underline; }
+.faq-a-inner p { margin: 0 0 10px; }
+.faq-a-inner p:last-child { margin-bottom: 0; }
+.faq-a-inner ul { margin: 0 0 12px 18px; padding: 0; }
+.faq-a-inner li { margin: 4px 0; font-size: 14px; }
+.faq-a-inner em { font-style: normal; font-family: 'Fraunces', serif; color: var(--primary); font-weight: 600; }
+.faq-a-inner strong { color: var(--text); font-weight: 700; }
 
 /* CTA */
 .cta-section { padding:60px 0; text-align:center; background:var(--bg-soft); }
@@ -307,7 +313,37 @@ footer a:hover { color:var(--accent); }
           <span class="qtext">권리금은 어떻게 측정하나요?</span>
           <svg class="qicon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">영업권리금(매출 × 영업이익률 × 기간) + 시설권리금(장비 감가) + 바닥권리금(입지)으로 구성됩니다. <a href="/calculator">권리금 계산기</a>에서 간단히 추정할 수 있으며, 실제 거래가는 매장 상태에 따라 변동됩니다.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>권리금은 3가지 요소로 구성됩니다.</p>
+
+          <p><strong>【1. 시설권리금】</strong><br>
+          인테리어·장비 등 시설의 현재 가치입니다.<br>
+          매년 약 20% 감가상각이 적용되며, 3년 이상 경과 시 거의 인정되지 않습니다.<br>
+          계산: <em>시설투자금액 × (0.8)^영업연수</em></p>
+
+          <p><strong>【2. 영업권리금】</strong><br>
+          단골손님·거래처·평판의 가치입니다.<br>
+          월 순이익 × 6~10개월로 산정합니다.<br>
+          뷰티업종은 원장님 개인 역량에 고객이 의존하는 경우가 많아 1인 운영 샵은 배수가 낮게 적용됩니다.</p>
+          <ul>
+            <li>1인 원장 운영: 월순이익 × 6개월</li>
+            <li>직원 1~2명: 월순이익 × 8개월</li>
+            <li>직원 3명 이상: 월순이익 × 10개월</li>
+          </ul>
+          <p>⚠️ 원장님이 이전하는 경우 단골 고객이 함께 이동할 수 있으므로 영업권리금 산정 시 이 점을 반드시 고려하세요.</p>
+
+          <p><strong>【3. 바닥권리금】</strong><br>
+          입지·상권·유동인구의 가치입니다.<br>
+          동일 상권 내 거래 사례를 기준으로 하며, 평수 × 상권 평당 단가로 추정합니다.</p>
+          <ul>
+            <li>서울 A급 상권: 평당 100~200만원</li>
+            <li>수도권/광역시: 평당 30~80만원</li>
+            <li>중소도시: 평당 10~50만원</li>
+          </ul>
+
+          <p>살롱마켓 권리금 계산기에서 간편하게 추정해보실 수 있습니다.<br>
+          → <a href="/calculator">권리금 계산기 바로가기</a></p>
+        </div></div>
       </div>
 
       <div class="faq-item" data-cat="closure">

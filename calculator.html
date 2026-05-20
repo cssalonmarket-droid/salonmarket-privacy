@@ -115,6 +115,14 @@ h1.hero-title .highlight { background:linear-gradient(135deg,var(--primary) 0%,v
   margin-top: -6px; padding: 0 0 8px;
   border-bottom: 1px solid var(--border-soft);
 }
+.range-meta { color: var(--text-mute); font-size: 12px; font-weight: 500; margin-left: 4px; }
+.result-note {
+  margin-top: 14px; padding: 14px 16px;
+  background: var(--warn-bg); border: 1px solid var(--warn);
+  border-radius: 10px;
+}
+.result-note strong { display: block; color: var(--warn); font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.result-note p { font-size: 12.5px; color: var(--text); line-height: 1.7; }
 .result-total {
   background: white; border-radius: 12px;
   padding: 18px 20px; margin-top: 14px;
@@ -231,32 +239,30 @@ footer a:hover { color:var(--accent); }
           <label for="category">업종 <span class="req">*</span></label>
           <select id="category" required>
             <option value="">선택해주세요</option>
-            <option value="hair">헤어 (미용실)</option>
-            <option value="nail">네일</option>
-            <option value="skin">피부 (에스테틱)</option>
+            <option value="hair">헤어샵 (미용실)</option>
+            <option value="nail">네일샵</option>
             <option value="lash">속눈썹</option>
             <option value="wax">왁싱</option>
-            <option value="scalp">두피관리</option>
-            <option value="makeup">메이크업</option>
-            <option value="academy">미용교육원</option>
+            <option value="skin">피부관리 (에스테틱)</option>
           </select>
         </div>
 
         <div class="field">
-          <label for="location">지역 <span class="req">*</span></label>
-          <select id="location" required>
+          <label for="zone">상권등급 <span class="req">*</span></label>
+          <select id="zone" required onchange="recalcFloor()">
             <option value="">선택해주세요</option>
-            <option value="gangnam">서울 강남</option>
-            <option value="seoul">서울 비강남</option>
-            <option value="metro">광역시 (부산/대구/인천 등)</option>
-            <option value="mid">중소도시</option>
-            <option value="etc">기타</option>
+            <option value="seoulA">서울 A급 (강남/홍대/명동)</option>
+            <option value="seoulB">서울 B급 (그 외 서울)</option>
+            <option value="metro">수도권/광역시 중심</option>
+            <option value="mid">중소도시 번화가</option>
+            <option value="local">주택가/일반상권</option>
           </select>
+          <div class="hint">상권등급 변경 시 바닥권리금이 자동 재추정됩니다</div>
         </div>
 
         <div class="field">
           <label for="area">평수 <span class="req">*</span></label>
-          <input id="area" type="number" min="5" max="100" placeholder="예: 20" required>
+          <input id="area" type="number" min="5" max="100" placeholder="예: 20" required oninput="recalcFloor()">
           <div class="hint">5~100평</div>
         </div>
 
@@ -269,13 +275,19 @@ footer a:hover { color:var(--accent); }
         <div class="field">
           <label for="profitMargin">영업이익률 (%) <span class="req">*</span></label>
           <input id="profitMargin" type="number" min="10" max="40" value="20" step="1" required>
-          <div class="hint">헤어샵 평균 15~25% / 네일샵 20~30% / 속눈썹·왁싱 25~35%</div>
+          <div class="hint">헤어샵 15~25% / 네일샵 20~30% / 속눈썹·왁싱 25~35%</div>
         </div>
 
         <div class="field">
-          <label for="equipment">장비 가치 (만원) <span class="req">*</span></label>
-          <input id="equipment" type="number" min="100" max="20000" placeholder="예: 2000" required>
-          <div class="hint">현재 장비 시세 추정값</div>
+          <label for="staff">운영 형태 <span class="req">*</span></label>
+          <select id="staff" required>
+            <option value="">선택해주세요</option>
+            <option value="solo">1인 원장</option>
+            <option value="small">직원 1~2명</option>
+            <option value="big">직원 3명 이상</option>
+            <option value="franchise">프랜차이즈</option>
+          </select>
+          <div class="hint">운영 인원 수에 따라 영업권리금 배수가 달라집니다</div>
         </div>
 
         <div class="field">
@@ -289,6 +301,18 @@ footer a:hover { color:var(--accent); }
           </select>
         </div>
 
+        <div class="field">
+          <label for="facility">시설 투자 금액 (만원) <span class="req">*</span></label>
+          <input id="facility" type="number" min="500" max="50000" placeholder="예: 5000" required>
+          <div class="hint">인테리어 + 장비 취득가 (오픈 당시 기준)</div>
+        </div>
+
+        <div class="field">
+          <label for="floor">바닥권리금 (만원) <span class="req">*</span></label>
+          <input id="floor" type="number" min="0" max="100000" placeholder="상권등급+평수 선택 시 자동 추정" required>
+          <div class="hint">자동 추정값 자동 입력 — 거래 사례 알면 직접 수정 가능</div>
+        </div>
+
         <button type="submit" class="calc-submit">권리금 계산하기</button>
       </form>
 
@@ -300,26 +324,37 @@ footer a:hover { color:var(--accent); }
         </div>
         <div id="result-detail" style="display:none;">
           <div class="result-row">
-            <span class="label">영업권리금</span>
-            <span class="value mono" id="r-op">-</span>
-          </div>
-          <div class="result-submeta">
-            적용 영업이익률: <span id="r-pm">-</span>%
-          </div>
-          <div class="result-row">
             <span class="label">시설권리금</span>
             <span class="value mono" id="r-fc">-</span>
           </div>
+          <div class="result-submeta">감가상각 반영 (연 -20%, <span id="r-fc-yr">-</span>년 경과)</div>
+
+          <div class="result-row">
+            <span class="label">영업권리금</span>
+            <span class="value mono" id="r-op">-</span>
+          </div>
+          <div class="result-submeta">월순이익 <span id="r-op-profit">-</span>만원 × <span id="r-op-mult">-</span>개월</div>
+
           <div class="result-row">
             <span class="label">바닥권리금</span>
             <span class="value mono" id="r-lc">-</span>
           </div>
+          <div class="result-submeta">상권등급 기준 추정 (사용자 조정값)</div>
+
           <div class="result-total">
             <span class="label">예상 권리금 총액</span>
             <span class="value mono" id="r-total">-</span>
           </div>
           <div class="result-range">
             현실 범위: <strong id="r-low">-</strong> ~ <strong id="r-high">-</strong>
+            <span class="range-meta">(±20% 변동)</span>
+          </div>
+
+          <div class="result-note">
+            <strong>⚠️ 뷰티업종 권리금 산정 시 주의</strong>
+            <p>뷰티업종은 원장님 개인 고객 의존도가 높아 영업권리금이 낮게 책정되는 경향이 있습니다.
+            1인 원장 운영 샵의 경우 원장님 이전 시 매출 감소 리스크를 반드시 고려하세요.
+            실제 거래가는 매장 상태에 따라 변동됩니다.</p>
           </div>
         </div>
       </div>
@@ -395,47 +430,82 @@ footer a:hover { color:var(--accent); }
 </footer>
 
 <script>
-// ── 권리금 계산 로직 ──────────────────────────
-const PROFIT_RATE = {
-  hair: 0.20, nail: 0.25, skin: 0.18, lash: 0.25,
-  wax: 0.22, scalp: 0.18, makeup: 0.20, academy: 0.15
+// ── 권리금 3요소 계산 로직 (v2: 시설/영업/바닥) ───────────────
+
+// 영업기간 → 영업연수 자동 변환 (시설 감가상각용)
+const PERIOD_YEARS = { lt1: 0.5, '1to3': 2, '3to5': 4, gt5: 6 };
+
+// 운영형태별 영업권리금 배수 (월순이익 × N개월)
+const STAFF_MULT = { solo: 6, small: 8, big: 10, franchise: 9 };
+
+// 상권등급별 평당 단가 (만원/평) — 바닥권리금 자동 추정용
+const ZONE_RATE = {
+  seoulA: 150,   // 강남/홍대/명동
+  seoulB: 80,    // 그 외 서울
+  metro: 50,     // 수도권/광역시 중심
+  mid: 35,       // 중소도시 번화가
+  local: 15,     // 주택가/일반상권
 };
-const PERIOD_MULT = { lt1: 6, '1to3': 12, '3to5': 18, gt5: 24 };
-const LOC_MULT = { gangnam: 1.5, seoul: 1.2, metro: 1.0, mid: 0.8, etc: 0.6 };
 
 function formatKRW(v) {
   return Math.round(v).toLocaleString('ko-KR') + '만원';
+}
+
+// 상권등급 또는 평수 변경 시 바닥권리금 자동 재추정 (사용자가 직접 수정한 값은 덮어쓰기 — recalculate가 user override)
+function recalcFloor() {
+  const zone = document.getElementById('zone').value;
+  const area = parseFloat(document.getElementById('area').value);
+  const floorEl = document.getElementById('floor');
+  if (!zone || !area || isNaN(area)) return;
+  const rate = ZONE_RATE[zone];
+  if (!rate) return;
+  const estimate = area * rate;
+  floorEl.value = Math.round(estimate);
 }
 
 function calcPremium(e) {
   e.preventDefault();
 
   const cat = document.getElementById('category').value;
-  const loc = document.getElementById('location').value;
+  const zone = document.getElementById('zone').value;
   const area = parseFloat(document.getElementById('area').value);
   const rev = parseFloat(document.getElementById('revenue').value);
   const pm = parseFloat(document.getElementById('profitMargin').value);
-  const eq = parseFloat(document.getElementById('equipment').value);
+  const staff = document.getElementById('staff').value;
   const period = document.getElementById('period').value;
+  const facility = parseFloat(document.getElementById('facility').value);
+  const floor = parseFloat(document.getElementById('floor').value);
 
-  if (!cat || !loc || !area || !rev || !pm || !eq || !period) return false;
-  // 영업이익률 입력 범위 검증 (10~40%)
+  if (!cat || !zone || !area || !rev || !pm || !staff || !period || isNaN(facility) || isNaN(floor)) {
+    alert('모든 필수 항목을 입력해주세요.');
+    return false;
+  }
   if (pm < 10 || pm > 40) {
     alert('영업이익률은 10~40% 범위로 입력해주세요.');
     return false;
   }
 
-  // 영업권리금 = 월매출 × (영업이익률/100) × 기간배수
-  // (이전 PROFIT_RATE[cat] 하드코딩 → 사용자 입력 pm 으로 교체)
-  const opRights = rev * (pm / 100) * PERIOD_MULT[period];
-  const fcRights = eq * 0.7; // 감가상각 30%
-  const lcRights = area * 30 * LOC_MULT[loc]; // 평당 30만원 기준
-  const total = opRights + fcRights + lcRights;
+  // ── ① 시설권리금 = 시설투자금액 × 0.8^영업연수 ────────
+  const years = PERIOD_YEARS[period];
+  const facilityRights = facility * Math.pow(0.8, years);
 
+  // ── ② 영업권리금 = 월순이익(매출 × 이익률) × 운영형태배수 ──
+  const monthlyProfit = rev * (pm / 100);
+  const staffMult = STAFF_MULT[staff];
+  const opRights = monthlyProfit * staffMult;
+
+  // ── ③ 바닥권리금 = 사용자 입력값 (자동 추정 or 직접 수정) ──
+  const floorRights = floor;
+
+  const total = facilityRights + opRights + floorRights;
+
+  // 결과 표시
+  document.getElementById('r-fc').textContent = formatKRW(facilityRights);
+  document.getElementById('r-fc-yr').textContent = years;
   document.getElementById('r-op').textContent = formatKRW(opRights);
-  document.getElementById('r-pm').textContent = pm;
-  document.getElementById('r-fc').textContent = formatKRW(fcRights);
-  document.getElementById('r-lc').textContent = formatKRW(lcRights);
+  document.getElementById('r-op-profit').textContent = formatKRW(monthlyProfit).replace('만원', '');
+  document.getElementById('r-op-mult').textContent = staffMult;
+  document.getElementById('r-lc').textContent = formatKRW(floorRights);
   document.getElementById('r-total').textContent = formatKRW(total);
   document.getElementById('r-low').textContent = formatKRW(total * 0.8);
   document.getElementById('r-high').textContent = formatKRW(total * 1.2);
