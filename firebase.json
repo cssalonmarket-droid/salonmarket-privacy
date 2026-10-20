@@ -1,5 +1,8 @@
 {
   "hosting": {
+    "predeploy": [
+      "node deploy-blocked.js"
+    ],
     "public": ".",
     "ignore": [
       "firebase.json",
@@ -10,6 +13,7 @@
       "*.bak.*",
       "landing_v1_reference.html",
       "**/*.md",
+      "deploy-blocked.js",
       "node_modules/**"
     ],
     "rewrites": [
